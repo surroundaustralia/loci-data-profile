@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Loc-I Dataset Profile - Spec</title>
+  <style type="text/css">
+    body, html {
+      margin:0;
+      padding:0;
+      width:100%;
+    }
+
+    body {
+      display:grid;
+      grid-template-columns: 1fr 3fr 1fr ;
+      grid-template-rows: 140px 10px auto 200px;
+
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.2em;
+    }
+
+    #header {
+      overflow: hidden;
+    }
+
+    #slogan {
+      font-size: 18px;
+      font-weight: 400;
+      color: #2f2f2f;
+
+      overflow: hidden;
+    }
+
+    #nav a {
+      color: #333;
+      text-decoration: none;
+      font-family: sans-serif;
+      margin: 0 10px 0 10px;
+    }
+
+    #strip {
+      width: 100%;
+      margin: 0;
+      position: relative;
+      display: block;
+      grid-column:1/4; 
+      background-color: rgb(182, 46, 51);
+    }
+
+    #content {
+      margin-top: 30px;
+    }
+
+    h1 {
+      padding: 0;
+      margin: 0 0 0.2em 0;
+      color: #2f2f2f;
+      font-family: sans-serif;
+      font-size: 3em;
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    #footer {
+      background-color: rgb(238, 238, 238);
+      border-top: solid 1px rgb(38, 51, 122);
+      padding-top:30px;
+      text-align: center;
+      color: rgb(50, 50, 50);
+    }
+    #footer a {
+      color: rgb(161, 154, 154);
+      text-decoration: none;
+      margin: 0 10px 0 10px
+    }
+
+    section {
+      margin-top: 2em;
+    }
+    dt {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    dd {
+      margin-bottom: 1em;
+    }
+    p.quote {
+      margin: 20px;
+      font-style: italic;
+      width: 50%;
+    }
+    p.req {
+      color: darkred;
+    }
+    code {
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <div id="header" style="grid-column:2; display:grid; grid-template-columns:180px auto; grid-template-rows:50% 50%;">
+    <div id="logo" style="grid-column:1; grid-row:1/3">
+      <a href="https://surroundaustralia.com">
+        <img alt="SURROUND Logo" style="width:100px; margin-top:10px" src="style/SURROUND-logo-100.png" /></a>
+    </div>
+  </div><!-- #header -->
+  <div id="strip"></div>
+  <div id="content" style="grid-column:2;">
+    <h1>Loc-I Dataset Profile - Specification</h1>
+    <section id="metadata">
+      <dl>
+        <dt>URI</dt>
+        <dd><code><a href="https://linked.data.gov.au/def/loci-dp/spec">https://linked.data.gov.au/def/loci-dp/spec</a></code></dd>
+        <dt>Title</dt>
+        <dd>Loc-I Dataset Profile - Specification Document</dd>
+        <dt>Definition</dt>
+        <dd>This document specifies the Loc-I Dataset Profile. It is to be used to inform people about the requirements that need to be met by data claiming to conform to the profile.</dd>
+        <dt>Created</dt>
+        <dd>2021-03-24</dd>
+        <dt>Modified</dt>
+        <dd>2021-03-24</dd>
+        <dt>Creator</dt>
+        <dd><a href="https://linked.data.gov.au/org/surround">SURROUND Australia Pty Ltd</a></dd>
+        <dt>Publisher</dt>
+        <dd><a href="https://linked.data.gov.au/org/surround">SURROUND Australia Pty Ltd</a></dd>
+        <dt>Further metadata</dt>
+        <dd>This specification is part of the <em>Loc-I Dataset Profile</em>. See that profile's main document for License &amp; Rights information and other metadata not given here.</dd>
+        <dt>Profile URI</dt>
+        <dd><code><a href="https://linked.data.gov.au/def/loci-dp">https://linked.data.gov.au/def/loci-dp</a></code></dd>
+      </dl>
+    </section>
+    <section id="abstract">
+      <h2>Abstract</h2>
+      <p>
+        This is the specification document of <a href="https://www.ga.gov.au">SURROUND Australia Pty Ltd</a>'s <a href="https://www.w3.org/TR/dx-prof/#definitions">profile</a> of <a href="https://w3id.org/profile/dcat2null">DCAT@ Null Profile</a> which is, in turn, a profile of <a href="https://www.w3.org/TR/vocab-dcat/">The Data Catalog Vocabulary - Version 2 (DCAT2)</a>. It defines the requirements that data must satisfy to be considered conformant with this profile.
+      </p>
+      <p>
+        DCAT2 defines <em>catalogues</em> and the <em>resources</em>, including <em>datasets</em> that can be placed inside them. The DCAT2 Null Profile provides some validation tooling for testing conformance of RDF data to DCAT2 - it adds no more constraints. This profile requires that specialised forms of <code>dcat:Datasets</code> and <code>dcat:DataService</code> exist that contain particular elements needed by Loc-I systems.
+      </p>
+      <p>
+        This specification is not to be used for testing conformance of RDF resources to this profile. That role belongs to the <em>validation</em> resource within this profile:
+      </p>
+      <ul>
+        <li><a href="https://linked.data.gov.au/def/loci-dp/validation">https://linked.data.gov.au/def/loci-dp/validation</a></li>
+      </ul>
+      <p>
+        For the list of all resources within this profile, see the profile definition:
+      </p>
+      <ul>
+        <li><a href="https://linked.data.gov.au/def/loci-dp">https://linked.data.gov.au/def/loci-dp</a></li>
+      </ul>
+    </section>
+    <section id="namespaces">
+      <h2>Namespaces</h2>
+      <p>
+        This document refers to elements of various ontologies by short codes using namespace prefixes. The prefixes and their corresponding namespaces' URIs are:
+      </p>
+      <dl>
+        <dt>dcterms</dt>
+        <dd><code>http://purl.org/dc/terms/</code></dd>
+        <dt>prof</dt>
+        <dd><code>http://www.w3.org/ns/dx/prof/</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+      </dl>
+    </section>
+    <section id="intro">
+      <h2>1. Introduction</h2>
+      <p>
+        <a href="https://www.ga.gov.au">SURROUND Australia Pty Ltd (SURROUND)</a> defines a <em>vocabulary</em> as a controlled collection of defined terms that may or may not contain relationships between terms and relationships to terms in other vocabularies.
+      </p>
+      <p>
+        SURROUND uses the Simple Knowledge Organization System Reference (SKOS)<sup><a href="#skos">ref</a></sup> to represent vocabularies in a form that can be read by humans and consumed by machines; that is, in <em>Semantic Web</em> form<sup><a href="#semantic-web">ref</a></sup>.
+      </p>
+      <p>
+        This document specifies a <em>profile</em> of SKOS and by profile, the definition of from the <em>Profiles Vocabulary</em><sup><a href="#prof">ref</a></sup> is used. A <em>profile</em> is:
+      </p>
+      <p class="quote">A specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications.
+      </p>
+      <p>
+        Here, the <em>other specification</em> being profiled is SKOS.
+      </p>
+      <p>
+        In the next section, this document describes how SKOS's elements must be presented to make a vocabulary that conforms to this profile.
+      </p>
+      <p>
+        This specification's rules/requriements - are numbered and <span style="color:darkred;">indicated in red text</span>.
+      </p>
+    </section>
+    <section id="elements-reqs">
+      <h2>2. Elements &amp; Requirements</h2>
+      <section id="vocabulary">
+        <h3>2.1 Vocabulary</h3>
+        <p>
+          SURROUND identifies Semantic Web objects with URI-based persistent identifiers. For this reason:
+        </p>
+        <p class="req">
+          2.1.1 Each vocabulary <em>MUST</em> be identified by a URI
+        </p>
+        <p>
+          As per the <em>SKOS Primer</em><sup><a href="#skos-primer">ref</a></sup>, a document guiding the use of SKOS:
+        </p>
+        <p class="quote">concepts usually come in carefully compiled vocabularies, such as thesauri or classification schemes. SKOS offers the means of representing such KOSs using the <code>skos:ConceptScheme</code> class.
+        </p>
+        <p>
+          For this reason, this profile requires that:
+        </p>
+        <p class="req">
+          2.1.2 Each vocabulary <em>MUST</em> be presented as a single <code>skos:ConceptScheme</code> object
+        </p>
+        <p>
+          For ease of data management:
+        </p>
+        <p class="req">
+          2.1.3 Each vocabulary <em>MUST</em> be presented in a single file which does not contain information other than that which is directly part of the vocabulary and the file is considered the point-of-truth
+        </p>
+        <p>
+          To ensure vocabularies can be catalogued effectively and governed:
+        </p>
+        <p class="req">
+          2.1.4 Each vocabulary <em>MUST</em> have one and only one title and one and only one definition values indicated using the <code>skos:prefLabel</code> and <code>skos:definition</code> properties respectively that must be text literal values
+        </p>
+        <p class="req">
+          2.1.5 Each vocabulary <em>MUST</em> have one and only one created date and one and only one modified date indicated using the <code>dcterms:created</code> and <code>dcterms:modified</code> properties respectively that must be either an xsd:date, xsd:dateTime or xsd:dateTimeStamp literal value
+        </p>
+        <p class="req">
+          2.1.6 Each vocabulary <em>MUST</em> have at least one creator and at least one publisher, indicated using <code>dcterms:creator</code> and <code>dcterms:publisher</code> properties respectively that must be URI values indicating instances of <code>sdo:Person</code>, <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>
+        </p>
+        <p>
+          To be able to link SKOS vocabularies to their non-vocabulary source information:
+        </p>
+        <p class="req">
+          2.1.7 Each vocabulary <em>MUST</em> indicate its source, or that it has no source, by use of either the <code>prov:wasDerivedFrom</code>, <code>dcterms:source</code>, <code>dcterms:provenance</code> properties
+        </p>
+        <p>
+          If a vocabulary is based on another Semantic Web resource, such as an ontology or another vocabulary, <code>prov:wasDerivedFrom</code> should be used to indicate that resource's URI. If the vocabulary is based on a resource that is identified by a URI but which is not a Semantic Web resource, <code>dcterms:source</code> should be used to indicate the resource's URI. If the vocabulary is based on something which cannot be identified by URI, a statement about the thing should be given in a literal value indicated with the <code>dcterms:provenance</code> property. If the vocabulary is not based on any other resource or source of information, i.e. this vocabulary is its only expression, this should be communicated by use of the <code>dcterms:provenance</code> indicating the phrase "This vocabulary is expressed for the first time here".
+        </p>
+        <p>
+          To ensure that all the terms within a vocabulary are linked to the main vocabulary object, the <code>skos:ConceptScheme</code>:
+        </p>
+        <p class="req">
+          2.1.8 All <code>skos:Concept</code> instances within a <code>skos:ConceptScheme</code> <em>MUST</em> link be ordered in a single, term hierarchy using <code>skos:broader</code> and/or <code>skos:narrower</code> properties and which contains no cycles.
+        </p>
+        <p>
+          To unambiguously link the term hierarchy within a vocabulary to the vocabulary itself:
+        </p>
+        <p class="req">
+          2.1.9 Each vocabulary's <code>skos:ConceptScheme</code> <em>MUST</em> link to at least one <code>skos:Concept</code> within the vocabulary as with the property <code>skos:hasTopConcept</code>
+        </p>
+      </section>
+      <section id="collection">
+        <h3>2.2 Collection</h3>
+        <p>
+          From the SKOS Primer<sup><a href="#skos-primer">ref</a></sup>:
+        </p>
+        <p class="quote">
+          SKOS makes it possible to define meaningful groupings or "collections" of concepts
+        </p>
+        <p>
+          To ensure that <code>skos:Collection</code> instances are identifiable and their meaning isn't obscure or lost:
+        </p>
+        <p class="req">
+          2.2.1 Each <code>skos:Collection</code> instance <em>MUST</em> have one and only one title and one and only one definition values indicated using the <code>skos:prefLabel</code> and <code>skos:definition</code> properties respectively that must be text literal values
+        </p>
+        <p>
+          If a <code>skos:Collection</code> is derived from an existing resource:
+        </p>
+        <p class="req">
+          2.2.2 Each <code>skos:Collection</code> in a vocabulary <em>SHOULD</em> indicate its source by use of either the <code>prov:wasDerivedFrom</code>, <code>dcterms:source</code>, <code>dcterms:provenance</code> properties if the collection is derived from a source
+        </p>
+      </section>
+      <section id="concept">
+        <h3>2.3 Concept</h3>
+        <p>
+          From the SKOS Primer<sup><a href="#skos-primer">ref</a></sup>:
+        </p>
+        <p class="quote">
+          The fundamental element of the SKOS vocabulary is the concept. Concepts are the units of thought — ideas, meanings, or (categories of) objects and events—which underlie many knowledge organization systems
+        </p>
+        <p>
+          Vocabularies conforming to this profile must present at least one <code>sckos:Concept</code> within the vocabulary file and, as per requirements in Section 2.1, at least once <code>skos:Concept</code> must be indicated as the top concept of the vocabulary.
+        </p>
+        <p>
+          To ensure that <code>skos:Concept</code> instances are identifiable and their meaning isn't obscure or lost:
+        </p>
+        <p class="req">
+          2.3.1 Each <code>skos:Concept</code> instance <em>MUST</em> have one and only one title and one and only one definition values indicated using the <code>skos:prefLabel</code> and <code>skos:definition</code> properties respectively that must be text literal values
+        </p>
+        <p>
+          To ensure that every <code>skos:Concept</code> is linked to the vocabulary that defines it:
+        </p>
+        <p class="req">
+          2.3.2 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> property indicating a <code>skos:ConceptScheme</code> instance
+        </p>
+        <p>Note that the vocabulary that defines a <code>skos:Concept</code> does not have to be the vocabulary in the file being validated. This is to allow for <code>skos:Concept</code> instance reuse across multiple vocabularies.</p>
+        <p>
+          Since a <code>skos:Concept</code> may be used in more than one vocabulary:
+        </p>
+        <p class="req">
+          2.3.3 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of terms by use of either or both <code>skos:inScheme</code> and <code>skos:topConceptOf</code> properties
+        </p>
+        <p>
+          If a <code>skos:Concept</code> is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
+        </p>
+        <p class="req">
+          2.3.4 Each <code>skos:Concept</code> in a vocabulary <em>MAY</em> indicate its source, if different or more finely specified than its vocabularies source, by use of either the <code>prov:wasDerivedFrom</code>, <code>dcterms:source</code>, <code>dcterms:provenance</code> properties
+        </p>
+      </section>
+    </section>
+    <section id="agent">
+      <h3>2.4 Agent</h3>
+      <p>
+        To be consistent with other Semantic Web representations of agents, vocabularies' associated agents, creator &amp; publisher must be certain typed RDF values:
+      </p>
+      <p class="req">
+        2.4.1 Each agent associated with a vocabulary <em>MUST</em> be typed as an <code>sdo:Person</code>, <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>
+      </p>
+      <p>
+        To ensure human readability and association of agents with their non-Semantic Web (real world) form:
+      </p>
+      <p class="req">
+        2.4.2 Each agent <em>MUST</em> indicate at least one name property with the <code>sdo:name</code> property that must be a text literal value
+      </p>
+      <p>
+        To ensure that agents are linked to non-Semantic Web forms of identification:
+      </p>
+      <p class="req">
+        2.4.3 Each agent <em>MUST</em> indicate either a <code>sdo:url</code> (for organizations) or a <code>sdo:email</code> (for people) property with a URL or email value
+      </p>
+    </section>
+    <section id="references">
+      <h2>3. References</h2>
+      <dl>
+        <dt><a id="prof"></a>PROV</dt>
+        <dd>
+          Rob Atkinson; Nicholas J. Car (eds.). <em>The Profiles Vocabulary</em>. 18 December 2019. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/dx-prof/">https://www.w3.org/TR/dx-prof/</a>
+        </dd>
+        <dt><a id="skos"></a>SKOS</dt>
+        <dd>
+          Alistair Miles; Sean Bechhofer (eds.). <em>SKOS Simple Knowledge Organization System Reference</em>. 18 August 2009. W3C Recommendation. URL: <a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a>
+        </dd>
+        <dt><a id="skos-primer"></a>SKOS Primer</dt>
+        <dd>
+          Antoine Isaac; Ed Summers (eds.). <em>SKOS Simple Knowledge Organization System Primer</em>. 18 August 2009. W3C Note. URL: <a href="https://www.w3.org/TR/skos-primer/">https://www.w3.org/TR/skos-primer/</a>
+        </dd>
+        <dt><a id="semantic-web"></a>Semantic Web</dt>
+        <dd>
+          World Wide Web Consortium. <em>Semantic Web</em> 2015. Web Page. URL: <a href="https://www.w3.org/standards/semanticweb/">https://www.w3.org/standards/semanticweb/</a>, accessed 2020-06-14
+        </dd>
+      </dl>
+    </section>
+  </div><!-- #content -->
+  <div id="footer" style="grid-column:1/4;">
+    <div id="footer-links">
+      &copy; SURROUND Australia Pty Ltd, 2021
+      <a href="https://surroundaustralia.com/about">About</a>
+      <a href="https://surroundaustralia.com/contact">Contact Us</a>
+      </div>
+  </div><!-- #footer -->
+</body>
+</html>
