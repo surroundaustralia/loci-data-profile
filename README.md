@@ -1,4 +1,4 @@
-# Loc-I Dataset Profile
+# Loc-I Data Profile
 This is a *profile* that is part of three profile hierarchies ultimately profiling:
 
 1. [DCAT2 Catalog Vocabulary (DCAT) - Version 2](https://www.w3.org/TR/vocab-dcat/) 
@@ -7,6 +7,8 @@ This is a *profile* that is part of three profile hierarchies ultimately profili
   * for its descriptions of RDF datasets (counts of triples etc.)
 3. [GeoSPARQL 1.1](https://opengeospatial.github.io/ogc-geosparql/geosparql11/spec.html)
   * for its Feature/Geometry relations
+4. [PROV-O](https://www.w3.org/TR/prov-o/)
+  * for its provenance relations
 
 This profile's place in the total hierarchy it is in is given in Figure 1.
 
@@ -30,6 +32,11 @@ This profile is hosted online in [Linked Data](https://www.w3.org/standards/sema
 
 
 ## Profile Resources
+
+### Specification
+_incomplete_
+
+This priofile's normative rules are presented in a _Specification document_ that identifies and states the various constraints that this profile places on a series of classes such as a derived form of DCAT's `dcat:Dataset` (the `loci:Dataset`), derived `void:Linkset` instances, `prov:Bundle` and so on.
 
 ### Validator
 This profile's rules, as extracted from the DCAT2 specification (the standard) are presented for machine validation of RDF vocabularies in the file [validator.shacl.ttl](validator.shacl.ttl) which conforms to the [SHACL](https://www.w3.org/TR/shacl/) standard.
