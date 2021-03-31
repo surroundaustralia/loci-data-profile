@@ -1,0 +1,51 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql> .
+@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sdo: <https://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://linked.data.gov.au/dataset/asgs2016>
+    a loci:Dataset ;
+    skos:prefLabel "ASGS 2016 DGGS" ;
+    skos:definition "A Linked Data representation of the Australian Statistical Geography Standard, 2016, represented according to an ASGS ontology." ;
+    dcterms:identifier "asgs2019"^^xsd:token ;
+    dcterms:publisher <https://linked.data.gov.au/org/ga> ;
+    dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dcterms:spatial [
+        a dcterms:Location ;
+        dcat:bbox "POLYGON ((96.0000 -45.0000, 96.0000 -9.0000, 168.0000 -9.0000, 168.0000 -45.0000, 96.0000 -45.0000))"^^geo:wktLiteral ;
+        locn:geometry "{\"type\": \"Polygon\", \"coordinates\": [[ [96.0,-45.0],[96.0,-9.0], [168.0,-9.0], [168.0,-45.0], [96.0,-45.0]]]}"^^geo:geoJSONLiteral ;
+    ] ;
+    dcat:contactPoint [
+        a vcard:Individual ;
+        vcard:fn "David Habgood" ;
+        vcard:hasEmail <mailto:david.habgood@surroundaustralia.com> ;
+        sdo:affiliation <https://linked.data.gov.au/org/surround> ;
+    ] ;
+     dcat:keyword "2016 Census" , "2016" , "ABS", "ASGS", "Australian Bureau of Statistics",
+     "Australian Statistical Geography Standard", "MB", "Mesh Block", "SA1", "SA2", "SA3", "SA4", "State",
+     "Statistical Area Level 1", "Statistical Area Level 2", "Statistical Area Level 3", "Statistical Area Level 4", "boundaries" ;
+    dcat:landingPage <https://linked.data.gov.au/dataset/asgs2016> ;
+    prov:wasDerivedFrom <http://data.gov.au/dataset/asgs-2016-edition-boundaries> ;
+    prov:asInBundle <https://linked.data.gov.au/dataset/asgs2016/provenance> ;
+.
+
+<http://data.gov.au/dataset/asgs-2016-edition-boundaries>
+    a dcat:Dataset ;
+    skos:prefLabel "ASGS (2016 Edition) - Boundaries" ;
+    skos:definition "ASGS 2016 digital boundaries in GeoPackage format." ;
+    dcterms:created "2018-02-02"^^xsd:date ;
+    dcterms:modified "2019-07-29"^^xsd:date ;
+.
+
+<https://linked.data.gov.au/dataset/asgs2016/provenance>
+    a prov:Bundle ;
+    skos:prefLabel "Provenance Bundle for ASGS 2016 Dataset" ;
+    skos:definition "A PROV-O Nundle containing provenance information about the ASGS 2016 Dataset." ;
+.

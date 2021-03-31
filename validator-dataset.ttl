@@ -1,63 +1,73 @@
-@prefix : <https://w3id.org/profile/dcat2null/shapes/> .
+@prefix : <https://linked.data.gov.au/def/loci/shapes/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix loci: <http://linked.data.gov.au/def/loci#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
-
 #
-#   Classes
+#   Dataset
 #
-
-#
-#   Catalog
-#
-:C
-    a sh:NodeShape ;
-    sh:targetNode dcat:Catalog ;
+<Requirement-D-title>
+	a sh:NodeShape ;
+	sh:targetClass loci:Dataset ;
+    sh:message "Requirement D-title: Each Dataset MUST have one and only one title, a text literal, indicated using the skos:prefLabel property" ;
     sh:property [
-        sh:path dcterms:hasPart ;
-        sh:class dcat:Resource ;        
-    ] ;
-    sh:message "Requirement C: All values for the property `dcterms:hasPart` on instances of `dcat:Catalog` must indicate an object of class dcat:Resource" ;
+        sh:path skos:prefLabel ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    ]
 .
 
-#
-#   dcat:keyword
-#
-:k-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:keyword ;
-    sh:nodeKind sh:Literal ;
-    sh:description "Requirement eD-r: When the property `dcat:keyword` is used, its range value must be a literal" ;		
+<Requirement-D-defn>
+	a sh:NodeShape ;
+	sh:targetClass loci:Dataset ;
+    sh:message "Requirement D-defn: Each Dataset MUST have one and only one definition, a text literal, indicated using the skos:definition property" ;
+    sh:property [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    ]
 .
 
-#
-#   dcat:landingPage
-#
-:lP-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:landingPage ;
-    sh:class foaf:Document ;
-    sh:description "Requirement cF-r: When the property `dcat:landingPage` is used, its range value must be an instance of type `foaf:Document`" ;	
+<Requirement-D-id>
+	a sh:NodeShape ;
+	sh:targetClass loci:Dataset ;
+    sh:message "Requirement D-id: Each Dataset MUST have one and only one identifier, an xsd:token, indicated using the dcterms:identifier property" ;
+    sh:property [
+        sh:path dcterms:identifier ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:token ;
+    ]
 .
 
-#
-#   dcat:mediaType
-#
-:mT-d a sh:NodeShape ;
-    sh:targetSubjectsOf dcat:mediaType ;
-    sh:class dcat:Distribution ;
-    sh:description "Requirement mT-d: When the property `dcat:mediaType` is used, its domain value must be an instance of type `dcat:Distribution`" ;
+<Requirement-D-pbundle>
+	a sh:NodeShape ;
+	sh:targetClass loci:Dataset ;
+    sh:message "Requirement D-pbundle: Each Dataset MUST indicate that it is within a prof:Bundle by an instance of one being indicated with the prov:asInBundle property" ;
+    sh:property [
+        sh:path prov:asInBundle ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class prov:Bundle
+    ]
 .
 
-:mT-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:mediaType ;
-    sh:class dcterms:MediaType ;
-    sh:description "Requirement mT-r: When the property `dcat:mediaType` is used, its range value must be an instance of type `dct:MediaType`" ;	
+<Requirement-D-derived>
+	a sh:NodeShape ;
+	sh:targetClass loci:Dataset ;
+    sh:message "Requirement D-derived: If a Dataset is derived from anotehr Dataset, it SHOULD indicate that that other dataset, a general DCAT Dataset instnace, with a prov:wasDerivedFrom property" ;
+    sh:property [
+        sh:path prov:wasDerivedFrom ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class dcat:Dataset
+    ]
 .
-

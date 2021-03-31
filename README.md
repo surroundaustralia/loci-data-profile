@@ -1,13 +1,17 @@
 # Loc-I Dataset Profile
-This is a *profile* that is part of two profile hierarchies:
+This is a *profile* that is part of three profile hierarchies ultimately profiling:
 
-1. DCAT2 profile hierarchy ultimately profiling [DCAT2 Catalog Vocabulary (DCAT) - Version 2](https://www.w3.org/TR/vocab-dcat/) 
-2. VoID profile hierarchy ultimately profiling the [VoID Vocabulary](https://www.w3.org/TR/void/) 
+1. [DCAT2 Catalog Vocabulary (DCAT) - Version 2](https://www.w3.org/TR/vocab-dcat/) 
+  * for its basic catalogue-level (metatada) descriptions of a Dataset
+2. [VoID Vocabulary](https://www.w3.org/TR/void/) 
+  * for its descriptions of RDF datasets (counts of triples etc.)
+3. [GeoSPARQL 1.1](https://opengeospatial.github.io/ogc-geosparql/geosparql11/spec.html)
+  * for its Feature/Geometry relations
 
-This profile's place in that double hierarchy is given in Figure 1.
+This profile's place in the total hierarchy it is in is given in Figure 1.
 
 ![]()
-Figure 1: This PRofile's place in the double DCAT2 and VoID profile hierarchies
+Figure 1: This PRofile's place in the profile hierarchies it is part of
 
 
 This profile is implemented by [SURROUND Australia](https://surroundaustralia.com) to allow for the validation of [Loc-I Project](https://www.ga.gov.au/locationindex) datasets and dataset derivatives.

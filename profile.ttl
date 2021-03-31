@@ -19,7 +19,7 @@
         skos:prefLabel "Specification"@en ;
         dcterms:description "The DCAT2 specification, as published by W3C"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/> ;
-        dcterms:format "text/turtle" ;
+        dcterms:format "text/html" ;
         prof:hasArtifact <https://www.w3.org/TR/vocab-dcat/> ;
         prof:hasRole role:specification
     ] ,    
