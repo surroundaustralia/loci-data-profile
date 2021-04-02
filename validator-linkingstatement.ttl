@@ -45,7 +45,6 @@
     ] ;
 .
 
-
 :Requirement-LS-part
 	a sh:NodeShape ;
 	sh:targetClass loci:LinkingStatement ;

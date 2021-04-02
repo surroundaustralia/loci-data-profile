@@ -40,7 +40,7 @@
 :Requirement-FC-id
 	a sh:NodeShape ;
 	sh:targetClass loci:FeatureCollection ;
-    sh:message "Requirement FC-id: Each Feature Collection _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier must be unique among Loc-I Datasets"@en ;
+    sh:message "Requirement FC-id: Each Feature Collection _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier must be unique within the Dataset it is part of. This uniqueness is not testable in SHACL."@en ;
     sh:property [
         sh:path dcterms:identifier ;
         sh:minCount 1 ;
@@ -49,7 +49,7 @@
     ]
 .
 
-:Requirement-C-part
+:Requirement-FC-part
 	a sh:NodeShape ;
 	sh:targetClass loci:FeatureCollection ;
     sh:message "Requirement FC-part: Each Feature Collection _MUST_ indicate that it is part of one and only one `loci:Dataset` with use of the `dcterms:isPartOf` property"@en ;

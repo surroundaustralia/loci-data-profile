@@ -44,7 +44,7 @@
 :Requirement-D-id
 	a sh:NodeShape ;
 	sh:targetClass loci:Dataset ;
-    sh:message "Requirement D-id: Each Dataset _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier _MUST_ be unique among Loc-I Datasets, but this is not testable in SHACL."@en ;
+    sh:message "Requirement D-id: Each Dataset _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier _MUST_ be unique among Loc-I Datasets. This uniqueness is not testable in SHACL."@en ;
     sh:property [
         sh:path dcterms:identifier ;
         sh:minCount 1 ;

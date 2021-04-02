@@ -1,63 +1,47 @@
-@prefix : <https://w3id.org/profile/dcat2null/shapes/> .
+@prefix : <https://linked.data.gov.au/def/loci/shapes/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix loci: <http://linked.data.gov.au/def/loci#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix reg: <http://purl.org/linked-data/registry#> .
+@prefix sdo: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
-
-#
-#   Classes
-#
-
-#
-#   Catalog
-#
-:C
-    a sh:NodeShape ;
-    sh:targetNode dcat:Catalog ;
+:Requirement-F-part
+	a sh:NodeShape ;
+	sh:targetClass loci:Feature ;
+    sh:message "Requirement F-part: Each Feature _MUST_ indicate that it is part of at least `loci:FeaturCollection` with use of the `dcterms:isPartOf` property"@en ;
     sh:property [
-        sh:path dcterms:hasPart ;
-        sh:class dcat:Resource ;        
-    ] ;
-    sh:message "Requirement C: All values for the property `dcterms:hasPart` on instances of `dcat:Catalog` must indicate an object of class dcat:Resource" ;
+        sh:path dcterms:isPartOf ;
+        sh:minCount 1 ;
+        sh:class loci:FeatureCollection
+    ]
 .
 
-#
-#   dcat:keyword
-#
-:k-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:keyword ;
-    sh:nodeKind sh:Literal ;
-    sh:description "Requirement eD-r: When the property `dcat:keyword` is used, its range value must be a literal" ;		
+:Requirement-F-id
+	a sh:NodeShape ;
+	sh:targetClass loci:Feature ;
+    sh:message "Requirement FC-id: Each Feature _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier must be unique within a Feature Collection. This uniqueness is not testable in SHACL."@en ;
+    sh:property [
+        sh:path dcterms:identifier ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:token ;
+    ]
 .
 
-#
-#   dcat:landingPage
-#
-:lP-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:landingPage ;
-    sh:class foaf:Document ;
-    sh:description "Requirement cF-r: When the property `dcat:landingPage` is used, its range value must be an instance of type `foaf:Document`" ;	
+:Requirement-F-geometry
+	a sh:NodeShape ;
+	sh:targetClass loci:Feature ;
+    sh:message "Requirement FC-geometry: Each Feature Collection _MUST_ have at least one geometry indicated using the `geo:hasGeometry` property"@en ;
+    sh:property [
+        sh:path geo:hasGeometry ;
+        sh:minCount 1 ;
+        sh:Class geo:Geometry ;
+    ]
 .
-
-#
-#   dcat:mediaType
-#
-:mT-d a sh:NodeShape ;
-    sh:targetSubjectsOf dcat:mediaType ;
-    sh:class dcat:Distribution ;
-    sh:description "Requirement mT-d: When the property `dcat:mediaType` is used, its domain value must be an instance of type `dcat:Distribution`" ;
-.
-
-:mT-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:mediaType ;
-    sh:class dcterms:MediaType ;
-    sh:description "Requirement mT-r: When the property `dcat:mediaType` is used, its range value must be an instance of type `dct:MediaType`" ;	
-.
-
