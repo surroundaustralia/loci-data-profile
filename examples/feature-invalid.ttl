@@ -1,0 +1,20 @@
+@prefix asgs: <https://linked.data.gov.au/def/asgs#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<https://linked.data.gov.au/dataset/asgs2016/meshblock/50159420000> 
+    a loci:Feature , asgs:MeshBlock, geo:Feature ;
+    asgs:category "Residential" ;
+    dcterms:identifier "50159420000"^^xsd:token ;
+    dcterms:isPartOf <https://linked.data.gov.au/dataset/asgs2016/meshblock/> 
+.
+
+<https://linked.data.gov.au/dataset/asgs2016/meshblock/> 
+    a loci:FeatureCollection ;
+    skos:prefLabel "ASGS 2016 MeshBlocks" ;
+.

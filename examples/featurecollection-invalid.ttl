@@ -1,0 +1,13 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<https://linked.data.gov.au/dataset/asgs2016/sa1/>
+    a loci:FeatureCollection ;
+    skos:prefLabel "Statistical Area Level 1 (SA1) Collection"@en ;
+    skos:altLabel "SA1s" ;
+    skos:definition "Statistical Areas Level 1 (SA1s) are designed to maximise the spatial detail available for Census data. Most SA1s have a population of between 200 to 800 persons with an average population of approximately 400 persons. This is to optimise the balance between spatial detail and the ability to cross classify Census variables without the resulting counts becoming too small for use. SA1s aim to separate out areas with different geographic characteristics within Suburb and Locality boundaries. In rural areas they often combine related Locality boundaries. SA1s are aggregations of Mesh Blocks (MBs). Whole SA1s aggregate to form Statistical Areas Level 2 (SA2s) Indigenous Locations (ILOCs) Urban Centres and Localities (UCLs) Remoteness Areas (RAs) Commonwealth Electoral Divisions (CEDs) and State Electoral Divisions (SEDs). SA1s are contiguous and in aggregate cover the whole of Australia without gaps or overlaps. An additional code (Outside Australia) has also been added to represent areas not covered by Geographical Australia." ;
+    dcterms:isPartOf <https://linked.data.gov.au/dataset/asgs2016> ;
+.

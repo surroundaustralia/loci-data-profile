@@ -1,0 +1,89 @@
+#
+#       Methods
+#
+@prefix m1: <https://linked.data.gov.au/def/gnaf/code/MeshBlockMatchTypes#ParcelLevel> .
+@prefix m2: <https://linked.data.gov.au/def/gnaf/code/MeshBlockMatchTypes#GapGeocodedAddressLevel> .
+@prefix m3: <https://linked.data.gov.au/def/gnaf/code/MeshBlockMatchTypes#StreetLocalityLevelSingle> .
+@prefix m4: <https://linked.data.gov.au/def/gnaf/code/MeshBlockMatchTypes#StreetLocalityLevelMultiple> .
+@prefix m5: <https://linked.data.gov.au/def/gnaf/code/MeshBlockMatchTypes#LocalityLevelSingle> .
+
+#
+#       Data types
+#
+@prefix d: <http://www.w3.org/2001/XMLSchema#date> .
+
+#
+#   Linkset
+#
+@prefix : <https://linked.data.gov.au/linkset/addrmb16/statement/> .
+@prefix l: <https://linked.data.gov.au/linkset/addrmb16> .
+@prefix s: <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> .
+@prefix p: <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> .
+@prefix o: <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> .
+@prefix g: <https://linked.data.gov.au/dataset/gnaf/address/> .
+@prefix b: <https://linked.data.gov.au/dataset/asgs2016/meshblock/> .
+@prefix m: <https://linked.data.gov.au/def/loci/hadGenerationMethod> .
+@prefix i: <http://purl.org/dc/terms/isPartOf> .
+@prefix w: <http://www.opengis.net/ont/geosparql#sfWithin> .
+@prefix c: <http://purl.org/dc/terms/created> .
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix reg: <http://purl.org/linked-data/registry#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix sdo: <https://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+# example from https://github.com/CSIRO-enviro-informatics/addrmb16-linkset
+l: a loci:Linkset ;
+    skos:prefLabel "Addresses (Nov 2018) Mesh Block (2016) Linkset"@en ;
+    skos:definition """This Loc-I Linkset relates the G-NAF Address individuals to ASGS Mesh Block individuals. Every relation is a geosparql:sfWithin.
+The Linkset triples (Address sfWithin MeshBlock) are reified so that each triple is contained within an RDF statement class instance. The triple is identified by the G-NAF MeshBlockMatch persistent identifier and the method used to generate the triple is given by the loci:hadGenerationMethod.
+This linkset contains 5 generation methods described by the [Mesh Block Match](https://linked.data.gov.au/def/gnaf/code/MeshBlockMatchTypes).
+The triples for the main data in this linkset - the Statements relating Addresses to Catchments - are valid RDF in the Turtle syntax but an unusual namespacing arrangement is used so all terms are indicated with as few letters as possible, mostly one letter then colon, e.g. s: for http://www.w3.org/1999/02/22-rdf-syntax-ns#subject, rather than the more common rdf:subject. This is simply to reduce file size."""@en ;
+    dcterms:creator <https://linked.data.gov.au/org/csiro> ;
+    dcterms:publisher <https://linked.data.gov.au/org/csiro> ;
+    dcat:contactPoint _:edmond ;
+    dcterms:created "2019-02-01"^^xsd:date ;
+    dcterms:modified "2019-02-01"^^xsd:date ;
+    dcterms:contributor <http://orcid.org/0000-0002-8742-7730> ;
+    void:subjectsTarget <https://linked.data.gov.au/dataset/gnaf> ;
+    dcterms:identifier "addrmb16"^^xsd:token ;
+    m: _:admb16_p ;
+.
+
+_:edmond a vcard:Individual ;
+  rdfs:seeAlso <https://orcid.org/0000-0002-6047-9864> ;
+  vcard:fn "Edmond Chuc" ;
+  vcard:hasEmail <mailto:edmond.chuc@csiro.au> ;
+.
+
+_:admb16_p a prov:Plan ;
+    rdfs:label "Generation of Mesh Block Match linkset method." ;
+    prov:value <https://raw.githubusercontent.com/CSIRO-enviro-informatics/addrmb16-linkset/master/linkset_generation_method.txt> ;
+    rdfs:comment "The method used to generate the G-NAF Addresses to ASGS Mesh Blocks linkset." ;
+    prov:wasAttributedTo _:edmond ;
+    prov:generatedAtTime "2019-02-01"^^xsd:date ;
+.
+
+:ACT1547495377
+  a loci:LinkingStatement ;
+  s: g:GAACT714851043 ;
+  p: w: ;
+  o: b:80002010000 ;
+  m: m1: ;
+  c: "2016-08-09"^^d: ;
+.
+
+<https://linked.data.gov.au/org/csiro>
+    a sdo:Organization ;
+    reg:register <https://linked.data.gov.au/org/> ;
+.

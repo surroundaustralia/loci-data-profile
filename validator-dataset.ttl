@@ -93,7 +93,7 @@
 	sh:property [
 		sh:path dcterms:creator ;
         sh:minCount 1 ;
-		sh:description "Requirement D-creator: Each Dataset _MUST_ indicate one or more creator agents with the dcterms:publsher property, typed as an `sdo:Person`, `sdo:Organization` or `sdo:GovernmentOrganization`"@en ;
+		sh:description "Requirement D-creator: Each Dataset _MUST_ indicate one or more creator agents with the dcterms:publisher property, typed as an `sdo:Person`, `sdo:Organization` or `sdo:GovernmentOrganization`"@en ;
         sh:or (
             [ sh:class sdo:GovernmentOrganization ]
             [ sh:class sdo:Organization ]
@@ -107,7 +107,7 @@
     sh:targetClass loci:Dataset ;
 	sh:property [
 		sh:path dcterms:publisher ;
-		sh:description "Requirement D-publisher: Each Dataset _MUST_ indicate at least one publisher agent with the `dcterms:publsher` property, typed as an `sdo:Organization` or `sdo:GovernmentOrganization`, that is registered by the AGLDWG within their Organisations register"@en ;
+		sh:description "Requirement D-publisher: Each Dataset _MUST_ indicate at least one publisher agent with the `dcterms:publisher` property, typed as an `sdo:Organization` or `sdo:GovernmentOrganization`, that is registered by the AGLDWG within their Organisations register"@en ;
         sh:minCount 1 ;
         sh:nodeKind sh:IRI ;
         sh:node [

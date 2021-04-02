@@ -1,0 +1,19 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix provwf: <https://data.surroundaustralia.com/def/provworkflow/Block> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<http://example.com/bndl>
+    a loci:Bundle ;
+    dcterms:title "Example Valid Loc-I Bundle"@en ;
+    dcterms:description "This example provenance bundle indicates a specialised Activity - a Worflow - that contains another specialised Activity - a Block - and the Workflow also indicates input (`prov:used`) and output (`prov:generated`) Entities, as required for loci-dp validity"@en ;
+    dcterms:hasPart <http://example.com/wf-1> ;
+.
+
+<http://example.com/wf-1>
+    a provwf:Workflow , prov:Activity ;
+    provwf:hadBlock <http://example.com/blk-x> ;
+    prov:used <http://example.com/entity/a> , <http://example.com/entity/b> ;
+.

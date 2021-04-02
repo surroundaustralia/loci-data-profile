@@ -1,3 +1,4 @@
+@prefix : <https://linked.data.gov.au/def/loci-dp/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix role: <http://www.w3.org/ns/dx/prof/role/> .
@@ -6,65 +7,161 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
-<https://w3id.org/profile/dcat2null>
+<https://linked.data.gov.au/def/loci-dp>
     a prof:Profile ;
-    dcterms:created "2021-03-23"^^xsd:date ;
+    dcterms:created "2021-04-01"^^xsd:date ;
     dcterms:creator <http://orcid.org/0000-0002-8742-7730> ;
-    dcterms:modified "2021-03-23"^^xsd:date ;
+    dcterms:modified "2021-04-03"^^xsd:date ;
     dcterms:publisher <https://linked.data.gov.au/org/surround> ;
-    skos:definition "This profile of DCAT2 implements no constraints on that specification and exists only to provice a validator resource for automated data validation. Validation rules have been extracted from the standard itself. See the standard for the specification of DCAT2 rules."@en ;
-    skos:prefLabel "DCAT2 Null Profile" ;
+    skos:definition "This profile specifies and provides contraint language validators for a number of data objects used within the [Location Index (Loc-I) Project]()" ;
     prof:hasResource 
     [
         skos:prefLabel "Specification"@en ;
-        dcterms:description "The DCAT2 specification, as published by W3C"@en ;
+        dcterms:description "The Loc-I Data Profile specification that provides the normative constraints of this profile."@en ;
         dcterms:conformsTo <https://www.w3.org/TR/> ;
         dcterms:format "text/html" ;
         prof:hasArtifact <https://www.w3.org/TR/vocab-dcat/> ;
         prof:hasRole role:specification
-    ] ,    
+    ] ,
     [
-        skos:prefLabel "Validator in SHACL"@en ;
-        dcterms:description "A SHACL validator Shape file implementing all the ontological rules present in the ontology"@en ;
+        skos:prefLabel "Validator for Bundle"@en ;
+        dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:Bundle` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://w3id.org/profile/dcat2null/validator> ;
+        prof:hasArtifact :validator-bundle ;
         prof:hasRole role:validation
     ] ,
     [
-        skos:prefLabel "DCAT2 Ontology"@en ;
-        dcterms:description "The unaltered ontology file, re-presented here for use in by validation tooling"@en ;
+        skos:prefLabel "Validator for Dataset"@en ;
+        dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:Dataset` class"@en ;
+        dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://w3id.org/profile/dcat2null/ont> ;
-        prof:hasRole role:schema
+        prof:hasArtifact :validator-dataset ;
+        prof:hasRole role:validation
+    ] ,
+    [
+        skos:prefLabel "Validator for Feature"@en ;
+        dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:Feature` class"@en ;
+        dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact :validator-feature ;
+        prof:hasRole role:validation
+    ] ,
+    [
+        skos:prefLabel "Validator for Feature Collection"@en ;
+        dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:FeatureCollection` class"@en ;
+        dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact :validator-featurecollection ;
+        prof:hasRole role:validation
+    ] ,
+    [
+        skos:prefLabel "Validator for Linking Statement"@en ;
+        dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:LinkingStatement` class"@en ;
+        dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact :validatorlinkingstatement ;
+        prof:hasRole role:validation
+    ] ,
+    [
+        skos:prefLabel "Validator for Linkset"@en ;
+        dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:Linkset` class"@en ;
+        dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact :validator-linkset ;
+        prof:hasRole role:validation
+    ] ,
+    [
+        skos:prefLabel "Example of a valid Dataset"@en ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/dataset-valid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of an invalid Dataset"@en ;
+        skos:definition "This example is invalid because the Dataset doesn't indicate it's creator or a modified date and the created data is a string, not an XSD date or date variant"@en ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/dataset-invalid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of a second invalid Dataset"@en ;
+        skos:definition "This example is invalid because the Dataset doesn't indicate a provenance `loci:Bundle` that it is mentioned in"@en ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/dataset-invalid-2> ;
+        prof:hasRole role:example
     ] ,    
     [
-        skos:prefLabel "Example of a valid dataset"@en ;
-        dcterms:description "Examples taken from the DCAT2 specification document"@en ;
+        skos:prefLabel "Example of a valid Feature Collection"@en ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://w3id.org/profile/dcat2null/examples/valid-spec-egs> ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/featurecollection-valid> ;
         prof:hasRole role:example
     ] ,
     [
-        skos:prefLabel "Example of an invalid dataset"@en ;
-        dcterms:description "The example dataset uses a literal instead of skos:Concepts for the dcat:theme property"@en ;
+        skos:prefLabel "Example of an invalid Feature Collection"@en ;
+        skos:definition "This example is invalid because the Feature Collection doesn't indicate an identifier with `dcterms:identifier`, the definition is not indicated to be English and the `dcterms:isPartOf` property indicates something not typed as a `loci:Dataset`"@en ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://w3id.org/profile/dcat2null/examples/invalid-1> ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/featurecollection-invalid> ;
         prof:hasRole role:example
     ] ,
     [
-        skos:prefLabel "Validation Commands"@en ;
-        dcterms:description "A text file containing some example pySHACL use to validate the examples"@en ;
+        skos:prefLabel "Example of a valid Bundle"@en ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://w3id.org/profile/dcat2null/validation-commands> ;
-        prof:hasRole role:guidance
-    ] ;  
-    prof:isProfileOf <https://w3id.org/profile/dcat2null> ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/bundle-valid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of an invalid Bundle"@en ;
+        skos:definition "This example is invalid because the Bundle indicates an Activity which doesn't then indicate an Entity that it generated"@en ;
+        dcterms:format "text/turtle" 
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/bundle-invalid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of a valid Feature"@en ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/feature-valid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of an invalid Feature"@en ;
+        skos:definition "This example is invalid because the Feature doesn't indicate a Geometry with `geo:hasGeometry`"@en ;
+        dcterms:format "text/turtle" 
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/feature-invalid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of a valid Linking Statement"@en ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkingstatement-valid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of an invalid Linking Statement"@en ;
+        skos:definition "This example is invalid because the Linking Statement indicated a generation method that doesn't state it is of type `prov:Plan`"@en ;
+        dcterms:format "text/turtle" 
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkingstatement-invalid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of a valid Linkset"@en ;
+        dcterms:format "text/turtle" ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkset-valid> ;
+        prof:hasRole role:example
+    ] ,
+    [
+        skos:prefLabel "Example of an invalid Linkset"@en ;
+        skos:definition "This example is invalid because the Linkset indicated a part (with an inverse `dcterms:isParOf` property) but the part doesn't indicate that it is a `loci:LinkingStatement`; the Linkset doesn't contain a `void:objectsTarget` property; the Linkset's `void:subjectsTarget` property indicates something that doens't declare its type to be a `loci:Dataset`"@en ;
+        dcterms:format "text/turtle" 
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkset-invalid> ;
+        prof:hasRole role:example
+    ] ,          
+    prof:isProfileOf <https://linked.data.gov.au/def/loci> ;
 .
 
 <http://orcid.org/0000-0002-8742-7730>
     sdo:name "Nicholas J Car" ;
-    sdo:email "nicholas.car@surroundaustrlaia.com"^^xsd:anyURI ;
+    sdo:email "nicholas.car@surroundaustralia.com"^^xsd:anyURI ;
     sdo:affiliation <https://linked.data.gov.au/org/surround> ;
 .
 

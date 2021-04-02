@@ -1,0 +1,35 @@
+@prefix asgs: <https://linked.data.gov.au/def/asgs#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<https://linked.data.gov.au/dataset/asgs2016/meshblock/50159420000> 
+    a loci:Feature , asgs:MeshBlock, geo:Feature ;
+    asgs:category "Residential" ;
+    dcterms:identifier "50159420000"^^xsd:token ;
+    geo:hasGeometry [ 
+        a geo:Geometry ;
+        geo:asGML """<gml:MultiSurface xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:MB="WFS" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" srsName="urn:ogc:def:crs:EPSG:6.9:3857">
+  <gml:surfaceMember>
+    <gml:Polygon>
+      <gml:exterior>
+        <gml:LinearRing>
+          <gml:posList> 12890822.013500001 -3737755.6664999984 12890846.741900001 -3737754.7577 12890903.244199999 -3737747.1075000018 12890960.993999999 -3737737.1114999987 12891071.723299999 -3737717.0687000006 12891231.982500002 -3737688.1275000013 12891225.408300001 -3737643.1422000006 12891224.729699999 -3737600.5947999991 12891196.515099999 -3737597.9195000008 12891144.738299999 -3737602.0802000016 12891120.0099 -3737605.3467999995 12891069.317899998 -3737616.6052000001 12891017.500300001 -3737623.1237999983 12890958.633299999 -3737629.5599000007 12890913.865499999 -3737638.5089000016 12890872.587699998 -3737648.6937999986 12890831.391399998 -3737650.5912999995 12890792.640999999 -3737646.6196000017 12890771.8904 -3737640.1105999984 12890769.480999999 -3737652.2050999999 12890757.766899999 -3737693.2382999994 12890755.463100001 -3737692.756000001 12890745.337699998 -3737729.1341000013 12890738.6985 -3737739.3748000003 12890779.736400001 -3737750.4684999995 12890822.013500001 -3737755.6664999984</gml:posList>
+        </gml:LinearRing>
+      </gml:exterior>
+    </gml:Polygon>
+  </gml:surfaceMember>
+</gml:MultiSurface>
+"""^^geo:gmlLiteral 
+    ] ;
+    dcterms:isPartOf <https://linked.data.gov.au/dataset/asgs2016/meshblock/> 
+.
+
+<https://linked.data.gov.au/dataset/asgs2016/meshblock/> 
+    a loci:FeatureCollection ;
+    skos:prefLabel "ASGS 2016 MeshBlocks" ;
+.

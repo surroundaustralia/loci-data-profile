@@ -1,4 +1,5 @@
 @prefix : <https://linked.data.gov.au/def/loci-dp/shapes/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -10,10 +11,10 @@
 
 :Requirement-L-m
 	a sh:NodeShape ;
-	sh:targetClass loci:FeatureCollection ;
-    sh:message "Requirement L-m: Each Linkset _MUST_ indicate at least one `loci:LinkingStatement` `rdfs:member` property"@en ;
+	sh:targetClass loci:Linkset ;
+    sh:message "Requirement L-m: Each Linkset _MUST_ indicate at least one `loci:LinkingStatement` by an inverse linking from that instance to the Linkset via the `dcterms:isPartOf` property"@en ;
     sh:property [
-        sh:path rdfs:member ;
+        sh:path [ sh:inversePath dcterms:isPartOf ] ;
         sh:minCount 1 ;
         sh:class loci:LinkingStatement ;
     ]
@@ -21,7 +22,7 @@
 
 :Requirement-L-st
 	a sh:NodeShape ;
-	sh:targetClass loci:FeatureCollection ;
+	sh:targetClass loci:Linkset ;
     sh:message "Requirement L-st: Each Linkset _MUST_ indicate one an only one subjects target Dataset with the property `void:subjectsTarget`"@en ;
     sh:property [
         sh:path void:subjectsTarget ;
@@ -33,7 +34,7 @@
 
 :Requirement-L-ot
 	a sh:NodeShape ;
-	sh:targetClass loci:FeatureCollection ;
+	sh:targetClass loci:Linkset ;
     sh:message "Requirement L-ot: Each Linkset _MUST_ indicate one an only one objects target Dataset with the property `void:objectsTarget`"@en ;
     sh:property [
         sh:path void:objectsTarget ;
