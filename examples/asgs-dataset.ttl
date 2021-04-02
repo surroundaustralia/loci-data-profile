@@ -1,9 +1,10 @@
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql> .
-@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix reg: <http://purl.org/linked-data/registry#> .
 @prefix sdo: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -12,10 +13,13 @@
 
 <https://linked.data.gov.au/dataset/asgs2016>
     a loci:Dataset ;
-    skos:prefLabel "ASGS 2016 DGGS" ;
-    skos:definition "A Linked Data representation of the Australian Statistical Geography Standard, 2016, represented according to an ASGS ontology." ;
+    skos:prefLabel "ASGS 2016 DGGS"@en ;
+    skos:definition "A Linked Data representation of the Australian Statistical Geography Standard, 2016, represented according to an ASGS ontology"@en ;
     dcterms:identifier "asgs2019"^^xsd:token ;
+    dcterms:creator <https://linked.data.gov.au/org/surround> ;
     dcterms:publisher <https://linked.data.gov.au/org/ga> ;
+    dcterms:created "2021-03-29"^^xsd:date ;
+    dcterms:modified "2021-04-03"^^xsd:date ;
     dcterms:license <http://creativecommons.org/licenses/by/4.0/> ;
     dcterms:spatial [
         a dcterms:Location ;
@@ -48,4 +52,13 @@
     a prov:Bundle ;
     skos:prefLabel "Provenance Bundle for ASGS 2016 Dataset" ;
     skos:definition "A PROV-O Nundle containing provenance information about the ASGS 2016 Dataset." ;
+.
+
+<https://linked.data.gov.au/org/surround> a sdo:Organization ;
+    sdo:name "SURROUND Australia Pty Ltd" ;
+    sdo:url "https://surroundaustralia.com"^^xsd:anyURI ;
+.
+
+<https://linked.data.gov.au/org/ga>
+    reg:register <https://linked.data.gov.au/org/> ;
 .
