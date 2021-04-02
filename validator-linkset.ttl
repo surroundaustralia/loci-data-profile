@@ -1,5 +1,5 @@
-@prefix : <http://linked.data.gov.au/def/loci/shapes/> .
-@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix : <https://linked.data.gov.au/def/loci-dp/shapes/> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix void: <http://rdfs.org/ns/void#> .

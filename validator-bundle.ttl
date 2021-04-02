@@ -1,6 +1,6 @@
 @prefix : <https://w3id.org/profile/dcat2null/shapes/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 

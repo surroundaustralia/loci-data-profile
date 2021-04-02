@@ -1,7 +1,7 @@
-@prefix : <https://linked.data.gov.au/def/loci/shapes/> .
+@prefix : <https://linked.data.gov.au/def/loci-dp/shapes/> .
 @prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -100,20 +100,7 @@
             [ sh:class sdo:Person ]
         ) ;
 	] ;
-.
-
-:AGLDWGOrganisationRestriction
-    a sh:NodeShape ;
-    rdfs:label "AGLDWG Organisation Restriction"@en ;
-    sh:description "This restriction is tobe used by other restrictions (for Requriements) to ensure that an Organisations is regstered in the registry of AGLDWG registered organisations"@en ;
-    sh:property [
-        sh:hasValue <https://linked.data.gov.au/def/org/> ;
-        sh:minCount 1 ;
-        sh:maxCount 1 ;
-        sh:nodeKind sh:IRI ;
-        sh:path reg:register
-    ] ;
-.    
+.   
 
 :Requirement-D-publisher
 	a sh:NodeShape ;
@@ -125,7 +112,7 @@
         sh:nodeKind sh:IRI ;
         sh:node [
             sh:property [
-                sh:hasValue <https://linked.data.gov.au/def/org/> ;
+                sh:hasValue <https://linked.data.gov.au/org/> ;
                 sh:minCount 1 ;
                 sh:maxCount 1 ;
                 sh:nodeKind sh:IRI ;
