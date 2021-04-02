@@ -9,6 +9,7 @@
 
 <https://linked.data.gov.au/def/loci-dp>
     a prof:Profile ;
+    skos:prefLabel "Loc-I Data Profile"@en ;
     dcterms:created "2021-04-01"^^xsd:date ;
     dcterms:creator <http://orcid.org/0000-0002-8742-7730> ;
     dcterms:modified "2021-04-03"^^xsd:date ;
@@ -60,7 +61,7 @@
         dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:LinkingStatement` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact :validatorlinkingstatement ;
+        prof:hasArtifact :validator-linkingstatement ;
         prof:hasRole role:validation
     ] ,
     [
@@ -113,7 +114,7 @@
     [
         skos:prefLabel "Example of an invalid Bundle"@en ;
         skos:definition "This example is invalid because the Bundle indicates an Activity which doesn't then indicate an Entity that it generated"@en ;
-        dcterms:format "text/turtle" 
+        dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/bundle-invalid> ;
         prof:hasRole role:example
     ] ,
@@ -126,7 +127,7 @@
     [
         skos:prefLabel "Example of an invalid Feature"@en ;
         skos:definition "This example is invalid because the Feature doesn't indicate a Geometry with `geo:hasGeometry`"@en ;
-        dcterms:format "text/turtle" 
+        dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/feature-invalid> ;
         prof:hasRole role:example
     ] ,
@@ -139,7 +140,7 @@
     [
         skos:prefLabel "Example of an invalid Linking Statement"@en ;
         skos:definition "This example is invalid because the Linking Statement indicated a generation method that doesn't state it is of type `prov:Plan`"@en ;
-        dcterms:format "text/turtle" 
+        dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkingstatement-invalid> ;
         prof:hasRole role:example
     ] ,
@@ -152,10 +153,10 @@
     [
         skos:prefLabel "Example of an invalid Linkset"@en ;
         skos:definition "This example is invalid because the Linkset indicated a part (with an inverse `dcterms:isParOf` property) but the part doesn't indicate that it is a `loci:LinkingStatement`; the Linkset doesn't contain a `void:objectsTarget` property; the Linkset's `void:subjectsTarget` property indicates something that doens't declare its type to be a `loci:Dataset`"@en ;
-        dcterms:format "text/turtle" 
+        dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkset-invalid> ;
-        prof:hasRole role:example
-    ] ,          
+        prof:hasRole role:example ;
+    ] ;
     prof:isProfileOf <https://linked.data.gov.au/def/loci> ;
 .
 

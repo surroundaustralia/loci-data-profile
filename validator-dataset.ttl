@@ -73,7 +73,7 @@
 :Requirement-D-modified
 	a sh:NodeShape ;
 	sh:targetClass loci:Dataset ;
-    sh:message "Requirement D-created: Each Dataset _MUST_ have one and only one modified date, an `xsd:date`, `xsd:dateTime` or `xsd:dateTimeStamp` value, indicated using the `dcterms:modified` property"@en ;
+    sh:message "Requirement D-modified: Each Dataset _MUST_ have one and only one modified date, an `xsd:date`, `xsd:dateTime` or `xsd:dateTimeStamp` value, indicated using the `dcterms:modified` property"@en ;
     sh:property [
         sh:path dcterms:modified ;
         sh:minCount 1 ;
