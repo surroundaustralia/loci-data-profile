@@ -4,42 +4,47 @@
 @prefix loci: <http://linked.data.gov.au/def/loci#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix reg: <http://purl.org/linked-data/registry#> .
+@prefix sdo: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
 #
-#   Dataset
+#   Dataset - DCAT-style annotation properties
 #
-<Requirement-D-title>
+:Requirement-D-title
 	a sh:NodeShape ;
 	sh:targetClass loci:Dataset ;
-    sh:message "Requirement D-title: Each Dataset MUST have one and only one title, a text literal, indicated using the skos:prefLabel property" ;
+    sh:message "Requirement D-title: Each Dataset _MUST_ have one and only one English title which is an English text literal, indicated using the `skos:prefLabel` property"@en ;
     sh:property [
         sh:path skos:prefLabel ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ("en") ;
     ]
 .
 
-<Requirement-D-defn>
+:Requirement-D-defn
 	a sh:NodeShape ;
 	sh:targetClass loci:Dataset ;
-    sh:message "Requirement D-defn: Each Dataset MUST have one and only one definition, a text literal, indicated using the skos:definition property" ;
+    sh:message "Requirement D-defn: Each Dataset _MUST_ have one and only one English definition which is an English text literal, indicated using the `skos:definition` property"@en ;
     sh:property [
         sh:path skos:definition ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ("en") ;
     ]
 .
 
-<Requirement-D-id>
+:Requirement-D-id
 	a sh:NodeShape ;
 	sh:targetClass loci:Dataset ;
-    sh:message "Requirement D-id: Each Dataset MUST have one and only one identifier, an xsd:token, indicated using the dcterms:identifier property" ;
+    sh:message "Requirement D-id: Each Dataset _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier _MUST_ be unique among Loc-I Datasets, but this is not testable in SHACL."@en ;
     sh:property [
         sh:path dcterms:identifier ;
         sh:minCount 1 ;
@@ -48,10 +53,94 @@
     ]
 .
 
-<Requirement-D-pbundle>
+# dates
+:Requirement-D-created
 	a sh:NodeShape ;
 	sh:targetClass loci:Dataset ;
-    sh:message "Requirement D-pbundle: Each Dataset MUST indicate that it is within a prof:Bundle by an instance of one being indicated with the prov:asInBundle property" ;
+    sh:message "Requirement D-created: Each Dataset _MUST_ have one and only one created date, an `xsd:date`, `xsd:dateTime` or `xsd:dateTimeStamp` value, indicated using the `dcterms:created` property"@en ;
+    sh:property [
+        sh:path dcterms:created ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:datatype xsd:dateTime ]
+            [ sh:datatype xsd:date ]
+            [ sh:datatype xsd:dateTimeStamp ]
+        ) ;
+    ]
+.
+
+:Requirement-D-modified
+	a sh:NodeShape ;
+	sh:targetClass loci:Dataset ;
+    sh:message "Requirement D-created: Each Dataset _MUST_ have one and only one modified date, an `xsd:date`, `xsd:dateTime` or `xsd:dateTimeStamp` value, indicated using the `dcterms:modified` property"@en ;
+    sh:property [
+        sh:path dcterms:modified ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:or (
+            [ sh:datatype xsd:dateTime ]
+            [ sh:datatype xsd:date ]
+            [ sh:datatype xsd:dateTimeStamp ]
+        ) ;
+    ]
+.
+
+# agents
+:Requirement-D-creator
+	a sh:NodeShape ;
+    sh:targetClass loci:Dataset ;
+	sh:property [
+		sh:path dcterms:creator ;
+        sh:minCount 1 ;
+		sh:description "Requirement D-creator: Each Dataset _MUST_ indicate one or more creator agents with the dcterms:publsher property, typed as an `sdo:Person`, `sdo:Organization` or `sdo:GovernmentOrganization`"@en ;
+        sh:or (
+            [ sh:class sdo:GovernmentOrganization ]
+            [ sh:class sdo:Organization ]
+            [ sh:class sdo:Person ]
+        ) ;
+	] ;
+.
+
+:AGLDWGOrganisationRestriction
+    a sh:NodeShape ;
+    rdfs:label "AGLDWG Organisation Restriction"@en ;
+    sh:description "This restriction is tobe used by other restrictions (for Requriements) to ensure that an Organisations is regstered in the registry of AGLDWG registered organisations"@en ;
+    sh:property [
+        sh:hasValue <https://linked.data.gov.au/def/org/> ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:path reg:register
+    ] ;
+.    
+
+:Requirement-D-publisher
+	a sh:NodeShape ;
+    sh:targetClass loci:Dataset ;
+	sh:property [
+		sh:path dcterms:publisher ;
+		sh:description "Requirement D-publisher: Each Dataset _MUST_ indicate at least one publisher agent with the `dcterms:publsher` property, typed as an `sdo:Organization` or `sdo:GovernmentOrganization`, that is registered by the AGLDWG within their Organisations register"@en ;
+        sh:minCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:node [
+            sh:property [
+                sh:hasValue <https://linked.data.gov.au/def/org/> ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:nodeKind sh:IRI ;
+                sh:path reg:register
+            ] ;
+        ]     
+	] ;
+.
+
+
+# provenance
+:Requirement-D-pbundle
+	a sh:NodeShape ;
+	sh:targetClass loci:Dataset ;
+    sh:message "Requirement D-pbundle: Each Dataset _MUST_ indicate that it is within a prof:Bundle by an instance of one being indicated with the `prov:asInBundle` property"@en ;
     sh:property [
         sh:path prov:asInBundle ;
         sh:minCount 1 ;
@@ -60,10 +149,10 @@
     ]
 .
 
-<Requirement-D-derived>
+:Requirement-D-derived
 	a sh:NodeShape ;
 	sh:targetClass loci:Dataset ;
-    sh:message "Requirement D-derived: If a Dataset is derived from anotehr Dataset, it SHOULD indicate that that other dataset, a general DCAT Dataset instnace, with a prov:wasDerivedFrom property" ;
+    sh:message "Requirement D-derived: If a Dataset is derived from anotehr Dataset, it _SHOULD_ indicate that that other dataset, a general DCAT Dataset instnace, with a `prov:wasDerivedFrom` property"@en ;
     sh:property [
         sh:path prov:wasDerivedFrom ;
         sh:minCount 1 ;

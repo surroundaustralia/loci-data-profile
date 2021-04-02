@@ -1,63 +1,44 @@
-@prefix : <https://w3id.org/profile/dcat2null/shapes/> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix : <http://linked.data.gov.au/def/loci/shapes/> .
+@prefix loci: <http://linked.data.gov.au/def/loci#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix void: <http://rdfs.org/ns/void#> .
 
+# Since Loc-I Linksets are Loc-I Datasets (via rdfs:subClassOf), all the constraints that apply to Loc-I Datasets also apply to Loc-I Linksets
 
+# There are also additional constrains on Loc-I Linksets:
 
-#
-#   Classes
-#
-
-#
-#   Catalog
-#
-:C
-    a sh:NodeShape ;
-    sh:targetNode dcat:Catalog ;
+:Requirement-L-m
+	a sh:NodeShape ;
+	sh:targetClass loci:FeatureCollection ;
+    sh:message "Requirement L-m: Each Linkset _MUST_ indicate at least one `loci:LinkingStatement` `rdfs:member` property"@en ;
     sh:property [
-        sh:path dcterms:hasPart ;
-        sh:class dcat:Resource ;        
-    ] ;
-    sh:message "Requirement C: All values for the property `dcterms:hasPart` on instances of `dcat:Catalog` must indicate an object of class dcat:Resource" ;
+        sh:path rdfs:member ;
+        sh:minCount 1 ;
+        sh:class loci:LinkingStatement ;
+    ]
 .
 
-#
-#   dcat:keyword
-#
-:k-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:keyword ;
-    sh:nodeKind sh:Literal ;
-    sh:description "Requirement eD-r: When the property `dcat:keyword` is used, its range value must be a literal" ;		
+:Requirement-L-st
+	a sh:NodeShape ;
+	sh:targetClass loci:FeatureCollection ;
+    sh:message "Requirement L-st: Each Linkset _MUST_ indicate one an only one subjects target Dataset with the property `void:subjectsTarget`"@en ;
+    sh:property [
+        sh:path void:subjectsTarget ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class loci:Dataset ;
+    ]
 .
 
-#
-#   dcat:landingPage
-#
-:lP-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:landingPage ;
-    sh:class foaf:Document ;
-    sh:description "Requirement cF-r: When the property `dcat:landingPage` is used, its range value must be an instance of type `foaf:Document`" ;	
+:Requirement-L-ot
+	a sh:NodeShape ;
+	sh:targetClass loci:FeatureCollection ;
+    sh:message "Requirement L-ot: Each Linkset _MUST_ indicate one an only one objects target Dataset with the property `void:objectsTarget`"@en ;
+    sh:property [
+        sh:path void:objectsTarget ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class loci:Dataset ;
+    ]
 .
-
-#
-#   dcat:mediaType
-#
-:mT-d a sh:NodeShape ;
-    sh:targetSubjectsOf dcat:mediaType ;
-    sh:class dcat:Distribution ;
-    sh:description "Requirement mT-d: When the property `dcat:mediaType` is used, its domain value must be an instance of type `dcat:Distribution`" ;
-.
-
-:mT-r a sh:NodeShape ;
-    sh:targetObjectsOf dcat:mediaType ;
-    sh:class dcterms:MediaType ;
-    sh:description "Requirement mT-r: When the property `dcat:mediaType` is used, its range value must be an instance of type `dct:MediaType`" ;	
-.
-

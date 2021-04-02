@@ -1,0 +1,27 @@
+@prefix : <https://w3id.org/profile/dcat2null/shapes/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix loci: <http://linked.data.gov.au/def/loci#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+# Since Loc-I Linksets are Loc-I Datasets (via rdfs:subClassOf), all the constraints that apply to Loc-I Datasets also apply to Loc-I Linksets
+
+# There are also additional constrains on Loc-I Linksets:
+
+:Requirement-B-mainactivity
+	a sh:NodeShape ;
+	sh:targetClass loci:Bundle ;
+    sh:message "Requirement B-mainactivity: Each Bundle _MUST_ contain at least one `prov:Activity` indicated by a `dcterms:hasPart` property which must, in turn, indicate at least one `prov:Entity` by use of `prov:generated"@en ;
+    sh:property [
+        sh:path dcterms:hasPart ;
+        sh:minCount 1 ;
+        sh:class prov:Activity ;
+        sh:node [
+            sh:property [
+                sh:path prov:generated ;
+                sh:minCount 1 ;
+                sh:class prov:Entity ;
+            ] ;
+        ] ;
+    ] ;
+.

@@ -8,38 +8,39 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
-
 #
-#   Collection
+#   Feature Collection - DCAT-style annotation properties
 #
-<Requirement-C-title>
+:Requirement-FC-title
 	a sh:NodeShape ;
 	sh:targetClass loci:FeatureCollection ;
-    sh:message "Requirement C-title: Each FeatureCollection MUST have one and only one title, a text literal, indicated using the skos:prefLabel property" ;
+    sh:message "Requirement FC-title: Each Feature Collection _MUST_ have one and only one English title which is an English text literal, indicated using the `skos:prefLabel` property"@en ;
     sh:property [
         sh:path skos:prefLabel ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ("en") ;
     ]
 .
 
-<Requirement-C-defn>
+:Requirement-FC-defn
 	a sh:NodeShape ;
 	sh:targetClass loci:FeatureCollection ;
-    sh:message "Requirement C-defn: Each FeatureCollection MUST have one and only one definition, a text literal, indicated using the skos:definition property" ;
+    sh:message "Requirement FC-defn: Each Feature Collection _MUST_ have one and only one English definition which is an English text literal, indicated using the `skos:definition` property"@en ;
     sh:property [
         sh:path skos:definition ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ("en") ;
     ]
 .
 
-<Requirement-C-id>
+:Requirement-FC-id
 	a sh:NodeShape ;
 	sh:targetClass loci:FeatureCollection ;
-    sh:message "Requirement C-id: Each FeatureCollection MUST have one and only one identifier, an xsd:token, indicated using the dcterms:identifier property" ;
+    sh:message "Requirement FC-id: Each Feature Collection _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier must be unique among Loc-I Datasets"@en ;
     sh:property [
         sh:path dcterms:identifier ;
         sh:minCount 1 ;
@@ -48,10 +49,10 @@
     ]
 .
 
-<Requirement-C-part>
+:Requirement-C-part
 	a sh:NodeShape ;
 	sh:targetClass loci:FeatureCollection ;
-    sh:message "Requirement C-part: Each FeatureCollection MUST indicate that it is part of one and only one loci:Dataset with use of the dcterms:isPartOf property" ;
+    sh:message "Requirement FC-part: Each Feature Collection _MUST_ indicate that it is part of one and only one `loci:Dataset` with use of the `dcterms:isPartOf` property"@en ;
     sh:property [
         sh:path dcterms:isPartOf ;
         sh:minCount 1 ;
