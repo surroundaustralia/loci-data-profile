@@ -1,4 +1,6 @@
 # Loc-I Data Profile
+*This profile is for data created according to a version 2 of the [Loc-I Ontology](https://linked.data.gov.au/def/loci) which is not released yet*
+
 This is a *profile* that is part of three profile hierarchies ultimately profiling:
 
 1. [DCAT2 Catalog Vocabulary (DCAT) - Version 2](https://www.w3.org/TR/vocab-dcat/) 
