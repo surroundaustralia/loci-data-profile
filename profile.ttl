@@ -21,7 +21,7 @@
         dcterms:description "The Loc-I Data Profile specification that provides the normative constraints of this profile."@en ;
         dcterms:conformsTo <https://www.w3.org/TR/> ;
         dcterms:format "text/html" ;
-        prof:hasArtifact <https://www.w3.org/TR/vocab-dcat/> ;
+        prof:hasArtifact :spec ;
         prof:hasRole role:specification
     ] ,
     [
@@ -29,7 +29,7 @@
         dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:Bundle` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact :validator-bundle ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/validator/bundle> ;
         prof:hasRole role:validation
     ] ,
     [
@@ -37,7 +37,7 @@
         dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:Dataset` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact :validator-dataset ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/validator/dataset> ;
         prof:hasRole role:validation
     ] ,
     [
@@ -45,7 +45,7 @@
         dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:Feature` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact :validator-feature ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/validator/feature> ;
         prof:hasRole role:validation
     ] ,
     [
@@ -53,7 +53,7 @@
         dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:FeatureCollection` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact :validator-featurecollection ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/validator/featurecollection> ;
         prof:hasRole role:validation
     ] ,
     [
@@ -61,7 +61,7 @@
         dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:LinkingStatement` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact :validator-linkingstatement ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/validator/linkingstatement> ;
         prof:hasRole role:validation
     ] ,
     [
@@ -69,7 +69,7 @@
         dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:Linkset` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact :validator-linkset ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/validator/linkset> ;
         prof:hasRole role:validation
     ] ,
     [
