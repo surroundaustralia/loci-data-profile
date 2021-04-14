@@ -206,44 +206,45 @@
       </p>
     </section>
     <section id="elements-reqs">
-      <h2>2. Requirements</h2>
+      <h2>2. Requirements</h2>      
       <p>This section lists requirements for Loc-I Ontology class instances.</p>
       <section id="dataset">
+        <h3>2.1 Dataset</h3>
         <p class="req">
-          <strong>D-title</strong>: Each Dataset _MUST_ have one and only one English title which is an English text literal, indicated using the `skos:prefLabel` property
+          <strong>D-title</strong>: Each Dataset _MUST_ have one and only one English title which is an English text literal, indicated using the <code>skos:prefLabel</code> property
         </p>
         <p class="note">
             <code>skos:prefLabel</code> is to be used rather than <code>rdfs:label</code> or <code>dcterms:title</code> or other, similar, titling properties.
         </p>
         <p class="req">
-          <strong>D-defn</strong>: Each Dataset _MUST_ have one and only one English definition which is an English text literal, indicated using the `skos:definition` property
+          <strong>D-defn</strong>: Each Dataset _MUST_ have one and only one English definition which is an English text literal, indicated using the <code>skos:definition</code> property
         </p>
         <p class="note">
             <code>skos:definition</code> is to be used rather than <code>rdfs:comment</code> or <code>dcterms:description</code> or other, similar, description properties.
         </p>
         <p class="req">
-          <strong>D-id</strong>: Each Dataset _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property
+          <strong>D-id</strong>: Each Dataset _MUST_ have one and only one identifier, an <code>xsd:token</code>, indicated using the <code>dcterms:identifier</code> property
         </p>
         <p class="note">
           This identifier _MUST_ be unique among Loc-I Datasets. This uniqueness is not testable in SHACL
         </p>
         <p class="req">
-          <strong>D-created</strong>: Each Dataset _MUST_ have one and only one created date, an `xsd:date`, `xsd:dateTime` or `xsd:dateTimeStamp` value, indicated using the `dcterms:created` property
+          <strong>D-created</strong>: Each Dataset _MUST_ have one and only one created date, an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> value, indicated using the <code>dcterms:created</code> property
         </p>
         <p class="req">
-          <strong>D-modified</strong>: Each Dataset _MUST_ have one and only one modified date, an `xsd:date`, `xsd:dateTime` or `xsd:dateTimeStamp` value, indicated using the `dcterms:modified` property
+          <strong>D-modified</strong>: Each Dataset _MUST_ have one and only one modified date, an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> value, indicated using the <code>dcterms:modified</code> property
         </p>
         <p class="req">
-          <strong>D-creator</strong>: Each Dataset _MUST_ indicate one or more creator agents with the dcterms:publisher property, typed as an `sdo:Person`, `sdo:Organization` or `sdo:GovernmentOrganization`
+          <strong>D-creator</strong>: Each Dataset _MUST_ indicate one or more creator agents with the dcterms:publisher property, typed as an <code>sdo:Person</code>, <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>
         </p>
         <p class="req">
-          <strong>D-publisher</strong>: Each Dataset _MUST_ indicate at least one publisher agent with the `dcterms:publisher` property, typed as an `sdo:Organization` or `sdo:GovernmentOrganization`, that is registered by the AGLDWG within their Organisations register
+          <strong>D-publisher</strong>: Each Dataset _MUST_ indicate at least one publisher agent with the <code>dcterms:publisher</code> property, typed as an <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>, that is registered by the AGLDWG within their Organisations register
         </p>
         <p class="req">
-          <strong>D-pbundle</strong>: Each Dataset _MUST_ indicate that it is within a prof:Bundle by an instance of one being indicated with the `prov:asInBundle` property
+          <strong>D-pbundle</strong>: Each Dataset _MUST_ indicate that it is within a prof:Bundle by an instance of one being indicated with the <code>prov:asInBundle</code> property
         </p>
         <p class="req">
-          <strong>D-derived</strong>: If a Dataset is derived from anotehr Dataset, it _SHOULD_ indicate that that other dataset, a general DCAT Dataset instnace, with a `prov:wasDerivedFrom` property
+          <strong>D-derived</strong>: If a Dataset is derived from anotehr Dataset, it _SHOULD_ indicate that that other dataset, a general DCAT Dataset instnace, with a <code>prov:wasDerivedFrom</code> property
         </p>
       </section>
       <section id="featurecollection">

@@ -156,7 +156,19 @@
         dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkset-invalid> ;
         prof:hasRole role:example ;
-    ] ;
+    ] ,
+    [
+        skos:prefLabel "Profile Code Repository"@en ;
+        skos:definition "An online version control repository storing all the content of this profile"@en ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/repo> ;
+        prof:hasRole role:repository
+    ] ,
+    [
+        skos:prefLabel "Profile Code Repository README"@en ;
+        skos:definition "An informal guidance document explaining parts of this profile and how to use them"@en ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/guidance> ;
+        prof:hasRole role:repository
+    ] ; 
     prof:isProfileOf <https://linked.data.gov.au/def/loci> ;
 .
 

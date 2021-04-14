@@ -32,7 +32,7 @@ _**NOTE**_: this profile relies on v2 of the Loc-I Ontology which is complete bu
 
 This profile is hosted online in [Linked Data](https://www.w3.org/standards/semanticweb/data) form using a persistent web address:
 
-* <https://w3id.org/profile/loci-dp>
+* <https://linked.data.gov.au/def/loci-dp>
 
 
 ## Profile Resources
@@ -51,6 +51,15 @@ Tools such as [pySHACL](https://github.com/RDFLib/pySHACL) and the online [SHACL
 ### Examples
 Examples of valid and invalid data for each Loc-I Ontology class, as assessed by this profiles' validators, are also presented as formal parts of this profile. See the [examples/](examples/) folder in this repository.
 
+
+## Profile Use
+There are several ways to use the resources in this profile. 
+
+1. **Read the _specification_ to understand the requirements of data**
+    * the Specification document in this profile is online at <https://linked.data.gov.au/def/loci-dp/spec> (and also the file in this repository [specification.html](https://raw.githack.com/surroundaustralia/loci-data-profile/master/specification.html))
+    * it states the normative requirements of Loc-I data, per class, in English
+2. **Validate data**
+    * the 6 validators for this profile - one per Loc-I Ontology main class - are presented as SHACL files in this repository. Use a tool like [pySHACL](https://github.com/RDFLib/pySHACL) to apply a validator to instance data and check its validity
 
 ## License  
 The contents of this repository are licensed using the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) licence. See the [LICENSE file](LICENSE) for the deed. 

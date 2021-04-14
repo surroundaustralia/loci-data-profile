@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/profile/dcat2null/shapes/> .
+@prefix : <https://linked.data.gov.au/def/loci-dp/shapes/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
