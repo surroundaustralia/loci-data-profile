@@ -167,7 +167,7 @@
         skos:prefLabel "Profile Code Repository README"@en ;
         skos:definition "An informal guidance document explaining parts of this profile and how to use them"@en ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/guidance> ;
-        prof:hasRole role:repository
+        prof:hasRole role:guidance
     ] ; 
     prof:isProfileOf <https://linked.data.gov.au/def/loci> ;
 .
