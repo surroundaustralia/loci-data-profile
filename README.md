@@ -28,6 +28,8 @@ This profile implements constraints on top of DCAT2/VoID Datasets to ensure that
 ### Profile Formalism
 This profile is formulated according to the [Profiles Vocabulary](https://www.w3.org/TR/dx-prof/) and provides a multiple [Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/) validator files for the automated validation of different classes of data within the [Loc-I Ontology](https://linked.data.gov.au/def/loci).
 
+_**NOTE**_: this profile relies on v2 of the Loc-I Ontology which is complete but isn't formally released yet.
+
 This profile is hosted online in [Linked Data](https://www.w3.org/standards/semanticweb/data) form using a persistent web address:
 
 * <https://w3id.org/profile/loci-dp>
