@@ -20,7 +20,7 @@
 :Requirement-F-id
 	a sh:NodeShape ;
 	sh:targetClass loci:Feature ;
-    sh:message "Requirement FC-id: Each Feature _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier must be unique within a Feature Collection. This uniqueness is not testable in SHACL."@en ;
+    sh:message "Requirement FC-id: Each Feature _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier must be unique within a Feature Collection. This uniqueness is not testable in SHACL"@en ;
     sh:property [
         sh:path dcterms:identifier ;
         sh:minCount 1 ;

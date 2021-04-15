@@ -205,236 +205,142 @@
         This specification's rules/requriements - are numbered and <span style="color:darkred;">indicated in red text</span>.
       </p>
     </section>
-    <section id="elements-reqs">
+    <section id="requirements">
       <h2>2. Requirements</h2>      
       <p>This section lists requirements for Loc-I Ontology class instances.</p>
       <section id="dataset">
         <h3>2.1 Dataset</h3>
         <p class="req">
-          <strong>D-title</strong>: Each Dataset _MUST_ have one and only one English title which is an English text literal, indicated using the <code>skos:prefLabel</code> property
+          <strong>D-title</strong>: Each Dataset <em>MUST</em> have one and only one English title which is an English text literal, indicated using the <code>skos:prefLabel</code> property
         </p>
         <p class="note">
             <code>skos:prefLabel</code> is to be used rather than <code>rdfs:label</code> or <code>dcterms:title</code> or other, similar, titling properties.
         </p>
         <p class="req">
-          <strong>D-defn</strong>: Each Dataset _MUST_ have one and only one English definition which is an English text literal, indicated using the <code>skos:definition</code> property
+          <strong>D-defn</strong>: Each Dataset <em>MUST</em> have one and only one English definition which is an English text literal, indicated using the <code>skos:definition</code> property
         </p>
         <p class="note">
             <code>skos:definition</code> is to be used rather than <code>rdfs:comment</code> or <code>dcterms:description</code> or other, similar, description properties.
         </p>
         <p class="req">
-          <strong>D-id</strong>: Each Dataset _MUST_ have one and only one identifier, an <code>xsd:token</code>, indicated using the <code>dcterms:identifier</code> property
+          <strong>D-id</strong>: Each Dataset <em>MUST</em> have one and only one identifier, an <code>xsd:token</code>, indicated using the <code>dcterms:identifier</code> property
         </p>
         <p class="note">
-          This identifier _MUST_ be unique among Loc-I Datasets. This uniqueness is not testable in SHACL
+          This identifier <em>MUST</em> be unique among Loc-I Datasets. This uniqueness is not testable in SHACL
         </p>
         <p class="req">
-          <strong>D-created</strong>: Each Dataset _MUST_ have one and only one created date, an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> value, indicated using the <code>dcterms:created</code> property
+          <strong>D-created</strong>: Each Dataset <em>MUST</em> have one and only one created date, an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> value, indicated using the <code>dcterms:created</code> property
         </p>
         <p class="req">
-          <strong>D-modified</strong>: Each Dataset _MUST_ have one and only one modified date, an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> value, indicated using the <code>dcterms:modified</code> property
+          <strong>D-modified</strong>: Each Dataset <em>MUST</em> have one and only one modified date, an <code>xsd:date</code>, <code>xsd:dateTime</code> or <code>xsd:dateTimeStamp</code> value, indicated using the <code>dcterms:modified</code> property
         </p>
         <p class="req">
-          <strong>D-creator</strong>: Each Dataset _MUST_ indicate one or more creator agents with the dcterms:publisher property, typed as an <code>sdo:Person</code>, <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>
+          <strong>D-creator</strong>: Each Dataset <em>MUST</em> indicate one or more creator agents with the dcterms:publisher property, typed as an <code>sdo:Person</code>, <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>
         </p>
         <p class="req">
-          <strong>D-publisher</strong>: Each Dataset _MUST_ indicate at least one publisher agent with the <code>dcterms:publisher</code> property, typed as an <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>, that is registered by the AGLDWG within their Organisations register
+          <strong>D-publisher</strong>: Each Dataset <em>MUST</em> indicate at least one publisher agent with the <code>dcterms:publisher</code> property, typed as an <code>sdo:Organization</code> or <code>sdo:GovernmentOrganization</code>, that is registered by the AGLDWG within their Organisations register
         </p>
         <p class="req">
-          <strong>D-pbundle</strong>: Each Dataset _MUST_ indicate that it is within a prof:Bundle by an instance of one being indicated with the <code>prov:asInBundle</code> property
+          <strong>D-pbundle</strong>: Each Dataset <em>MUST</em> indicate that it is within a prof:Bundle by an instance of one being indicated with the <code>prov:asInBundle</code> property
         </p>
         <p class="req">
-          <strong>D-derived</strong>: If a Dataset is derived from anotehr Dataset, it _SHOULD_ indicate that that other dataset, a general DCAT Dataset instnace, with a <code>prov:wasDerivedFrom</code> property
+          <strong>D-derived</strong>: If a Dataset is derived from anotehr Dataset, it <em>SHOULD</em> indicate that that other dataset, a general DCAT Dataset instnace, with a <code>prov:wasDerivedFrom</code> property
         </p>
       </section>
       <section id="featurecollection">
         <h3>2.2 Feature Collection</h3>
         <p>
-          From the SKOS Primer<sup><a href="#skos-primer">ref</a></sup>:
-        </p>
-        <p class="quote">
-          SKOS makes it possible to define meaningful groupings or "collections" of concepts
-        </p>
-        <p>
-          To ensure that <code>skos:Collection</code> instances are identifiable and their meaning isn't obscure or lost:
+          Loc-I matches the OGC API<sup><a href="#ogcapi">ref</a></sup> specification's method of arranging multiple <code>Feature</code> instances within a <code>Dataset</code> by grouping them into <code>FeatureCollection</code>. <code>FeatureCollection</code> instances are not spatial object themselves but are administrative (managed) collection (of <code>Feature</code> instances). They just require basic metadata, no spatial properties.
         </p>
         <p class="req">
-          2.2.1 Each <code>skos:Collection</code> instance <em>MUST</em> have one and only one title and one and only one definition values indicated using the <code>skos:prefLabel</code> and <code>skos:definition</code> properties respectively that must be text literal values
-        </p>
-        <p>
-          If a <code>skos:Collection</code> is derived from an existing resource:
+          <strong>FC-title</strong>: Each Feature Collection <em>MUST</em> have one and only one English title which is an English text literal, indicated using the <code>skos:prefLabel</code> property
         </p>
         <p class="req">
-          2.2.2 Each <code>skos:Collection</code> in a vocabulary <em>SHOULD</em> indicate its source by use of either the <code>prov:wasDerivedFrom</code>, <code>dcterms:source</code>, <code>dcterms:provenance</code> properties if the collection is derived from a source
+          <strong>FC-defn</strong>: Each Feature Collection <em>MUST</em> have one and only one English definition which is an English text literal, indicated using the <code>skos:definition</code> property
         </p>
+        <p class="req">
+          <strong>FC-id</strong>: Each Feature Collection <em>MUST</em> have one and only one identifier, an <code>xsd:token</code>, indicated using the <code>dcterms:identifier</code> property. Note: this identifier must be unique within the Dataset it is part of. This uniqueness is not testable in SHACL.
+        </p>
+        <p class="req">
+          <strong>FC-part</strong>: Each Feature Collection <em>MUST</em> indicate that it is part of one and only one <code>loci:Dataset</code> with use of the <code>dcterms:isPartOf</code> property
+        </p>        
       </section>
       <section id="feature">
         <h3>2.3 Feature</h3>
         <p>
-          From the SKOS Primer<sup><a href="#skos-primer">ref</a></sup>:
-        </p>
-        <p class="quote">
-          The fundamental element of the SKOS vocabulary is the concept. Concepts are the units of thought — ideas, meanings, or (categories of) objects and events—which underlie many knowledge organization systems
-        </p>
-        <p>
-          Vocabularies conforming to this profile must present at least one <code>sckos:Concept</code> within the vocabulary file and, as per requirements in Section 2.1, at least once <code>skos:Concept</code> must be indicated as the top concept of the vocabulary.
-        </p>
-        <p>
-          To ensure that <code>skos:Concept</code> instances are identifiable and their meaning isn't obscure or lost:
+          Features are the code <em>things</em> within Loc-I data. The are the spatial objects we care about and to which properties of interest are attached. Loc-I requirements for <code>Feature</code> isntances are that they have geometries - without which they can't be used as spatial objects - and are part of <code>FeatureCollection</code> instances. Each <code>Feature</code> instance must have an ID that is unique within a <code>FeatureCollection</code> so it can be used by systems taht cannot handle IRIs, such as OGC APIs, to refer to individuals. 
         </p>
         <p class="req">
-          2.3.1 Each <code>skos:Concept</code> instance <em>MUST</em> have one and only one title and one and only one definition values indicated using the <code>skos:prefLabel</code> and <code>skos:definition</code> properties respectively that must be text literal values
-        </p>
-        <p>
-          To ensure that every <code>skos:Concept</code> is linked to the vocabulary that defines it:
+          <strong>F-part</strong>: Each Feature <em>MUST</em> indicate that it is part of at least <code>loci:FeaturCollection</code> with use of the <code>dcterms:isPartOf</code> property 
         </p>
         <p class="req">
-          2.3.2 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> property indicating a <code>skos:ConceptScheme</code> instance
-        </p>
-        <p>Note that the vocabulary that defines a <code>skos:Concept</code> does not have to be the vocabulary in the file being validated. This is to allow for <code>skos:Concept</code> instance reuse across multiple vocabularies.</p>
-        <p>
-          Since a <code>skos:Concept</code> may be used in more than one vocabulary:
-        </p>
+          <strong>FC-id</strong>: Each Feature <em>MUST</em> have one and only one identifier, an <code>xsd:token</code>, indicated using the <code>dcterms:identifier</code> property. Note: this identifier must be unique within a Feature Collection. This uniqueness is not testable in SHACL
+        </p> 
         <p class="req">
-          2.3.3 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of terms by use of either or both <code>skos:inScheme</code> and <code>skos:topConceptOf</code> properties
-        </p>
-        <p>
-          If a <code>skos:Concept</code> is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
-        </p>
-        <p class="req">
-          2.3.4 Each <code>skos:Concept</code> in a vocabulary <em>MAY</em> indicate its source, if different or more finely specified than its vocabularies source, by use of either the <code>prov:wasDerivedFrom</code>, <code>dcterms:source</code>, <code>dcterms:provenance</code> properties
+          <strong>FC-geometry</strong>: Each Feature Collection <em>MUST</em> have at least one geometry indicated using the <code>geo:hasGeometry</code> property
         </p>
       </section>
       <section id="linkset">
         <h3>2.4 Linkset</h3>
         <p>
-          From the SKOS Primer<sup><a href="#skos-primer">ref</a></sup>:
+          Loc-I <code>Dataset</code> instances may be joined by <code>Linkset</code> instances. A <code>Linkset</code> is a specialised form of a <code>Dataset</code> specifically created to join other <code>Dataset</code> instances and, as a result, has some mandatory properties to ensure joining is correctly specified.
         </p>
-        <p class="quote">
-          The fundamental element of the SKOS vocabulary is the concept. Concepts are the units of thought — ideas, meanings, or (categories of) objects and events—which underlie many knowledge organization systems
-        </p>
-        <p>
-          Vocabularies conforming to this profile must present at least one <code>sckos:Concept</code> within the vocabulary file and, as per requirements in Section 2.1, at least once <code>skos:Concept</code> must be indicated as the top concept of the vocabulary.
-        </p>
-        <p>
-          To ensure that <code>skos:Concept</code> instances are identifiable and their meaning isn't obscure or lost:
+        <p>Note that because <code>Linkset</code> instances are also <code>Dataset</code> instances, all the <code>Dataset</code> rule apply to <code>Linkset</code> instances in addition to thiese specialised requirements.</p>
+        <p class="req">
+          <strong>L-m</strong>: Each Linkset <em>MUST</em> indicate at least one <code>loci:LinkingStatement</code> by an inverse linking from that instance to the Linkset via the <code>dcterms:isPartOf</code> property
         </p>
         <p class="req">
-          2.3.1 Each <code>skos:Concept</code> instance <em>MUST</em> have one and only one title and one and only one definition values indicated using the <code>skos:prefLabel</code> and <code>skos:definition</code> properties respectively that must be text literal values
-        </p>
-        <p>
-          To ensure that every <code>skos:Concept</code> is linked to the vocabulary that defines it:
+          <strong>L-st</strong>: Each Linkset <em>MUST</em> indicate one an only one subjects target Dataset with the property <code>void:subjectsTarget</code>
         </p>
         <p class="req">
-          2.3.2 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> property indicating a <code>skos:ConceptScheme</code> instance
-        </p>
-        <p>Note that the vocabulary that defines a <code>skos:Concept</code> does not have to be the vocabulary in the file being validated. This is to allow for <code>skos:Concept</code> instance reuse across multiple vocabularies.</p>
-        <p>
-          Since a <code>skos:Concept</code> may be used in more than one vocabulary:
-        </p>
-        <p class="req">
-          2.3.3 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of terms by use of either or both <code>skos:inScheme</code> and <code>skos:topConceptOf</code> properties
-        </p>
-        <p>
-          If a <code>skos:Concept</code> is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
-        </p>
-        <p class="req">
-          2.3.4 Each <code>skos:Concept</code> in a vocabulary <em>MAY</em> indicate its source, if different or more finely specified than its vocabularies source, by use of either the <code>prov:wasDerivedFrom</code>, <code>dcterms:source</code>, <code>dcterms:provenance</code> properties
-        </p>
+          <strong>L-ot</strong>: Each Linkset <em>MUST</em> indicate one an only one objects target Dataset with the property <code>void:objectsTarget</code>
+        </p>                
       </section>  
       <section id="linkingstatement">
         <h3>2.5 Linking Statement</h3>
         <p>
-          From the SKOS Primer<sup><a href="#skos-primer">ref</a></sup>:
-        </p>
-        <p class="quote">
-          The fundamental element of the SKOS vocabulary is the concept. Concepts are the units of thought — ideas, meanings, or (categories of) objects and events—which underlie many knowledge organization systems
-        </p>
-        <p>
-          Vocabularies conforming to this profile must present at least one <code>sckos:Concept</code> within the vocabulary file and, as per requirements in Section 2.1, at least once <code>skos:Concept</code> must be indicated as the top concept of the vocabulary.
-        </p>
-        <p>
-          To ensure that <code>skos:Concept</code> instances are identifiable and their meaning isn't obscure or lost:
+          The graph elements within <code>Linkset</code> instances that indicate <code>Feature</code>-level links between <code>Dataset</code> instances are <code>LinkingStatement</code> instances which are specialised forms of the standard <code>rdf:Statement</code> class.
         </p>
         <p class="req">
-          2.3.1 Each <code>skos:Concept</code> instance <em>MUST</em> have one and only one title and one and only one definition values indicated using the <code>skos:prefLabel</code> and <code>skos:definition</code> properties respectively that must be text literal values
-        </p>
-        <p>
-          To ensure that every <code>skos:Concept</code> is linked to the vocabulary that defines it:
+          <strong>LS-subject</strong>: Each Linking Statement <em>MUST</em> indicate one an only one subject with the property<code>rdf:subject</code>
         </p>
         <p class="req">
-          2.3.2 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> property indicating a <code>skos:ConceptScheme</code> instance
-        </p>
-        <p>Note that the vocabulary that defines a <code>skos:Concept</code> does not have to be the vocabulary in the file being validated. This is to allow for <code>skos:Concept</code> instance reuse across multiple vocabularies.</p>
-        <p>
-          Since a <code>skos:Concept</code> may be used in more than one vocabulary:
-        </p>
+          <strong>LS-predicate</strong>: Each Linking Statement <em>MUST</em> indicate one an only one predicate with the property<code>rdf:predicate</code>
+        </p> 
         <p class="req">
-          2.3.3 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of terms by use of either or both <code>skos:inScheme</code> and <code>skos:topConceptOf</code> properties
-        </p>
-        <p>
-          If a <code>skos:Concept</code> is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
-        </p>
+          <strong>LS-object</strong>: Each Linking Statement <em>MUST</em> indicate one an only one object with the property<code>rdf:object</code>
+        </p> 
         <p class="req">
-          2.3.4 Each <code>skos:Concept</code> in a vocabulary <em>MAY</em> indicate its source, if different or more finely specified than its vocabularies source, by use of either the <code>prov:wasDerivedFrom</code>, <code>dcterms:source</code>, <code>dcterms:provenance</code> properties
-        </p>
+          <strong>L-part</strong>: Each Linking Statement <em>MUST</em> indicate that it is part of one and only one<code>loci:Linkset</code> with use of the<code>dcterms:isPartOf</code> property
+        </p> 
+        <p class="req">
+          <strong>LS-method</strong>: Each Linking Statement <em>MUST</em> indicate that it was generated by one and only one method (a<code>prov:Plan</code>) with use of the<code>loci:hadGenerationMethod</code> property
+        </p> 
       </section>  
       <section id="bundle">
         <h3>2.6 Bundle</h3>
         <p>
-          From the SKOS Primer<sup><a href="#skos-primer">ref</a></sup>:
-        </p>
-        <p class="quote">
-          The fundamental element of the SKOS vocabulary is the concept. Concepts are the units of thought — ideas, meanings, or (categories of) objects and events—which underlie many knowledge organization systems
-        </p>
-        <p>
-          Vocabularies conforming to this profile must present at least one <code>sckos:Concept</code> within the vocabulary file and, as per requirements in Section 2.1, at least once <code>skos:Concept</code> must be indicated as the top concept of the vocabulary.
-        </p>
-        <p>
-          To ensure that <code>skos:Concept</code> instances are identifiable and their meaning isn't obscure or lost:
+          Provenance for Loc-I datasets must be recorded using PROV-O, the Provenance Ontology<sup><a href="#prov">ref</a></sup>. The provenance statements are collected in <code>prov:Bundle</code> objects. EAch <code>Bundle</code> instance must include certain elements that allow users to understand how the <code>Dataset</code> that the <code>Bundle</code> is for was produced.
         </p>
         <p class="req">
-          2.3.1 Each <code>skos:Concept</code> instance <em>MUST</em> have one and only one title and one and only one definition values indicated using the <code>skos:prefLabel</code> and <code>skos:definition</code> properties respectively that must be text literal values
-        </p>
-        <p>
-          To ensure that every <code>skos:Concept</code> is linked to the vocabulary that defines it:
-        </p>
-        <p class="req">
-          2.3.2 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate the vocabulary that defines it by use of the <code>rdfs:isDefinedBy</code> property indicating a <code>skos:ConceptScheme</code> instance
-        </p>
-        <p>Note that the vocabulary that defines a <code>skos:Concept</code> does not have to be the vocabulary in the file being validated. This is to allow for <code>skos:Concept</code> instance reuse across multiple vocabularies.</p>
-        <p>
-          Since a <code>skos:Concept</code> may be used in more than one vocabulary:
-        </p>
-        <p class="req">
-          2.3.3 Each <code>skos:Concept</code> in a vocabulary <em>MUST</em> indicate that it appears within that vocabulary's hierarchy of terms by use of either or both <code>skos:inScheme</code> and <code>skos:topConceptOf</code> properties
-        </p>
-        <p>
-          If a <code>skos:Concept</code> is derived from an existing resource and that derivation is not already covered by source information for the vocabulary that it is within:
-        </p>
-        <p class="req">
-          2.3.4 Each <code>skos:Concept</code> in a vocabulary <em>MAY</em> indicate its source, if different or more finely specified than its vocabularies source, by use of either the <code>prov:wasDerivedFrom</code>, <code>dcterms:source</code>, <code>dcterms:provenance</code> properties
+          <strong>B-mainactivity</strong>: Each Bundle <em>MUST</em> contain at least one <code>prov:Activity</code> indicated by a <code>dcterms:hasPart</code> property which must, in turn, indicate at least one <code>prov:Entity</code> by use of <code>prov:generated</code>
         </p>
       </section>  
     </section>
     <section id="references">
       <h2>3. References</h2>
       <dl>
-        <dt><a id="prof"></a>PROV</dt>
+        <dt><a id="ogcapi"></a>OGC-API</dt>
+        <dd>
+          Clemens Portele, Panagiotis (Peter) A. Vretanos, Charles Heazel (eds.). <em>OGC API - Features - Part 1: Core</em>. 14 October 2019. Open Geospatial Consortium standard. URL: <a href="http://www.opengis.net/doc/IS/ogcapi-features-1/1.0">http://www.opengis.net/doc/IS/ogcapi-features-1/1.0</a>
+        </dd>          
+        <dt><a id="prof"></a>PROF</dt>
         <dd>
           Rob Atkinson; Nicholas J. Car (eds.). <em>The Profiles Vocabulary</em>. 18 December 2019. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/dx-prof/">https://www.w3.org/TR/dx-prof/</a>
         </dd>
-        <dt><a id="skos"></a>SKOS</dt>
+        <dt><a id="prov"></a>PROV</dt>
         <dd>
-          Alistair Miles; Sean Bechhofer (eds.). <em>SKOS Simple Knowledge Organization System Reference</em>. 18 August 2009. W3C Recommendation. URL: <a href="https://www.w3.org/TR/skos-reference/">https://www.w3.org/TR/skos-reference/</a>
-        </dd>
-        <dt><a id="skos-primer"></a>SKOS Primer</dt>
-        <dd>
-          Antoine Isaac; Ed Summers (eds.). <em>SKOS Simple Knowledge Organization System Primer</em>. 18 August 2009. W3C Note. URL: <a href="https://www.w3.org/TR/skos-primer/">https://www.w3.org/TR/skos-primer/</a>
-        </dd>
-        <dt><a id="semantic-web"></a>Semantic Web</dt>
-        <dd>
-          World Wide Web Consortium. <em>Semantic Web</em> 2015. Web Page. URL: <a href="https://www.w3.org/standards/semanticweb/">https://www.w3.org/standards/semanticweb/</a>, accessed 2020-06-14
+          Lebo, Timothy, Satya Sahoo, and Deborah McGuinness. <em>PROV-O: The PROV Ontology.</em> W3C Recommendation. W3C Provenance Working Group, 2013. URL: <a href="http://www.w3.org/TR/prov-o/">http://www.w3.org/TR/prov-o/</a>.
         </dd>
       </dl>
     </section>
