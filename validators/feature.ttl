@@ -1,25 +1,24 @@
 @prefix : <https://linked.data.gov.au/def/loci-dp/shapes/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
-@prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
 :Requirement-F-part
 	a sh:NodeShape ;
-	sh:targetClass loci:Feature ;
-    sh:message "Requirement F-part: Each Feature _MUST_ indicate that it is part of at least `loci:FeaturCollection` with use of the `dcterms:isPartOf` property"@en ;
+	sh:targetClass geo:Feature ;
+    sh:message "Requirement F-part: Each Feature _MUST_ indicate that it is part of at least `geo:FeatureCollection` with use of the `dcterms:isPartOf` property"@en ;
     sh:property [
         sh:path dcterms:isPartOf ;
         sh:minCount 1 ;
-        sh:class loci:FeatureCollection
+        sh:class geo:FeatureCollection
     ]
 .
 
 :Requirement-F-id
 	a sh:NodeShape ;
-	sh:targetClass loci:Feature ;
+	sh:targetClass geo:Feature ;
     sh:message "Requirement FC-id: Each Feature _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier must be unique within a Feature Collection. This uniqueness is not testable in SHACL"@en ;
     sh:property [
         sh:path dcterms:identifier ;
@@ -31,8 +30,8 @@
 
 :Requirement-F-geometry
 	a sh:NodeShape ;
-	sh:targetClass loci:Feature ;
-    sh:message "Requirement FC-geometry: Each Feature Collection _MUST_ have at least one geometry indicated using the `geo:hasGeometry` property"@en ;
+	sh:targetClass geo:Feature ;
+    sh:message "Requirement FC-geometry: Each Feature _MUST_ have at least one geometry indicated using the `geo:hasGeometry` property"@en ;
     sh:property [
         sh:path geo:hasGeometry ;
         sh:minCount 1 ;

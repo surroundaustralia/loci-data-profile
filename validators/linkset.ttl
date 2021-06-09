@@ -1,6 +1,7 @@
 @prefix : <https://linked.data.gov.au/def/loci-dp/shapes/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix loci: <https://linked.data.gov.au/def/loci#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix void: <http://rdfs.org/ns/void#> .
@@ -11,35 +12,35 @@
 
 :Requirement-L-m
 	a sh:NodeShape ;
-	sh:targetClass loci:Linkset ;
-    sh:message "Requirement L-m: Each Linkset _MUST_ indicate at least one `loci:LinkingStatement` by an inverse linking from that instance to the Linkset via the `dcterms:isPartOf` property"@en ;
+	sh:targetClass void:Linkset ;
+    sh:message "Requirement L-m: Each Linkset _MUST_ indicate at least one `rdf:Statement` by an inverse linking from that instance to the Linkset via the `dcterms:isPartOf` property"@en ;
     sh:property [
         sh:path [ sh:inversePath dcterms:isPartOf ] ;
         sh:minCount 1 ;
-        sh:class loci:LinkingStatement ;
+        sh:class rdf:Statement ;
     ]
 .
 
 :Requirement-L-st
 	a sh:NodeShape ;
-	sh:targetClass loci:Linkset ;
+	sh:targetClass void:Linkset ;
     sh:message "Requirement L-st: Each Linkset _MUST_ indicate one an only one subjects target Dataset with the property `void:subjectsTarget`"@en ;
     sh:property [
         sh:path void:subjectsTarget ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:class loci:Dataset ;
+        sh:class dcat:Dataset ;
     ]
 .
 
 :Requirement-L-ot
 	a sh:NodeShape ;
-	sh:targetClass loci:Linkset ;
+	sh:targetClass void:Linkset ;
     sh:message "Requirement L-ot: Each Linkset _MUST_ indicate one an only one objects target Dataset with the property `void:objectsTarget`"@en ;
     sh:property [
         sh:path void:objectsTarget ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:class loci:Dataset ;
+        sh:class dcat:Dataset ;
     ]
 .

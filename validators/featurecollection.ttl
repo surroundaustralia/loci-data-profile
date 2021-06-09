@@ -1,6 +1,7 @@
 @prefix : <https://linked.data.gov.au/def/loci-dp/shapes/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix loci: <https://linked.data.gov.au/def/loci#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
@@ -13,7 +14,7 @@
 #
 :Requirement-FC-title
 	a sh:NodeShape ;
-	sh:targetClass loci:FeatureCollection ;
+	sh:targetClass geo:FeatureCollection ;
     sh:message "Requirement FC-title: Each Feature Collection _MUST_ have one and only one English title which is an English text literal, indicated using the `skos:prefLabel` property"@en ;
     sh:property [
         sh:path skos:prefLabel ;
@@ -26,7 +27,7 @@
 
 :Requirement-FC-defn
 	a sh:NodeShape ;
-	sh:targetClass loci:FeatureCollection ;
+	sh:targetClass geo:FeatureCollection ;
     sh:message "Requirement FC-defn: Each Feature Collection _MUST_ have one and only one English definition which is an English text literal, indicated using the `skos:definition` property"@en ;
     sh:property [
         sh:path skos:definition ;
@@ -39,7 +40,7 @@
 
 :Requirement-FC-id
 	a sh:NodeShape ;
-	sh:targetClass loci:FeatureCollection ;
+	sh:targetClass geo:FeatureCollection ;
     sh:message "Requirement FC-id: Each Feature Collection _MUST_ have one and only one identifier, an `xsd:token`, indicated using the `dcterms:identifier` property. Note: this identifier must be unique within the Dataset it is part of. This uniqueness is not testable in SHACL."@en ;
     sh:property [
         sh:path dcterms:identifier ;
@@ -51,12 +52,12 @@
 
 :Requirement-FC-part
 	a sh:NodeShape ;
-	sh:targetClass loci:FeatureCollection ;
-    sh:message "Requirement FC-part: Each Feature Collection _MUST_ indicate that it is part of one and only one `loci:Dataset` with use of the `dcterms:isPartOf` property"@en ;
+	sh:targetClass geo:FeatureCollection ;
+    sh:message "Requirement FC-part: Each Feature Collection _MUST_ indicate that it is part of one and only one `dcat:Dataset` with use of the `dcterms:isPartOf` property"@en ;
     sh:property [
         sh:path dcterms:isPartOf ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-        sh:class loci:Dataset
+        sh:class dcat:Dataset
     ]
 .

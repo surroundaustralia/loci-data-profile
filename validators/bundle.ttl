@@ -1,6 +1,5 @@
 @prefix : <https://linked.data.gov.au/def/loci-dp/shapes/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
@@ -10,7 +9,7 @@
 
 :Requirement-B-mainactivity
 	a sh:NodeShape ;
-	sh:targetClass loci:Bundle ;
+	sh:targetClass prov:Bundle ;
     sh:message "Requirement B-mainactivity: Each Bundle _MUST_ contain at least one `prov:Activity` indicated by a `dcterms:hasPart` property which must, in turn, indicate at least one `prov:Entity` by use of `prov:generated"@en ;
     sh:property [
         sh:path dcterms:hasPart ;
