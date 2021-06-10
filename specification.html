@@ -271,7 +271,7 @@
           Features are the code <em>things</em> within Loc-I data. The are the spatial objects we care about and to which properties of interest are attached. Loc-I requirements for <code>Feature</code> isntances are that they have geometries - without which they can't be used as spatial objects - and are part of <code>FeatureCollection</code> instances. Each <code>Feature</code> instance must have an ID that is unique within a <code>FeatureCollection</code> so it can be used by systems taht cannot handle IRIs, such as OGC APIs, to refer to individuals. 
         </p>
         <p class="req">
-          <strong>F-part</strong>: Each Feature <em>MUST</em> indicate that it is part of at least <code>loci:FeatureCollection</code> with use of the <code>dcterms:isPartOf</code> property 
+          <strong>F-part</strong>: Each Feature <em>MUST</em> indicate that it is part of at least <code>geo:FeatureCollection</code> with use of the <code>dcterms:isPartOf</code> property 
         </p>
         <p class="req">
           <strong>FC-id</strong>: Each Feature <em>MUST</em> have one and only one identifier, an <code>xsd:token</code>, indicated using the <code>dcterms:identifier</code> property. Note: this identifier must be unique within a Feature Collection. This uniqueness is not testable in SHACL
