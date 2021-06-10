@@ -58,10 +58,10 @@
     ] ,
     [
         skos:prefLabel "Validator for Linking Statement"@en ;
-        dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:LinkingStatement` class"@en ;
+        dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:statement` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/validator/linkingstatement> ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/validator/statement> ;
         prof:hasRole role:validation
     ] ,
     [
@@ -134,14 +134,14 @@
     [
         skos:prefLabel "Example of a valid Linking Statement"@en ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkingstatement-valid> ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/statement-valid> ;
         prof:hasRole role:example
     ] ,
     [
         skos:prefLabel "Example of an invalid Linking Statement"@en ;
         skos:definition "This example is invalid because the Linking Statement indicated a generation method that doesn't state it is of type `prov:Plan`"@en ;
         dcterms:format "text/turtle" ;
-        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkingstatement-invalid> ;
+        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/statement-invalid> ;
         prof:hasRole role:example
     ] ,
     [
@@ -152,7 +152,7 @@
     ] ,
     [
         skos:prefLabel "Example of an invalid Linkset"@en ;
-        skos:definition "This example is invalid because the Linkset indicated a part (with an inverse `dcterms:isParOf` property) but the part doesn't indicate that it is a `loci:LinkingStatement`; the Linkset doesn't contain a `void:objectsTarget` property; the Linkset's `void:subjectsTarget` property indicates something that doens't declare its type to be a `loci:Dataset`"@en ;
+        skos:definition "This example is invalid because the Linkset indicated a part (with an inverse `dcterms:isParOf` property) but the part doesn't indicate that it is a `loci:statement`; the Linkset doesn't contain a `void:objectsTarget` property; the Linkset's `void:subjectsTarget` property indicates something that doens't declare its type to be a `loci:Dataset`"@en ;
         dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/linkset-invalid> ;
         prof:hasRole role:example ;
