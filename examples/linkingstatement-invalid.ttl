@@ -13,15 +13,15 @@
 @prefix c: <http://purl.org/dc/terms/created> .
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix loci: <https://linked.data.gov.au/def/loci#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix void: <http://rdfs.org/ns/void#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
 # example from https://github.com/CSIRO-enviro-informatics/addrmb16-linkset
 :ACT1547495377
-  a loci:LinkingStatement ;
+  a rdf:Statement ;
   s: g:GAACT714851043 ;
   p: w: ;
   o: b:80002010000 ;
@@ -31,7 +31,7 @@
 .
 
 l:
-  a loci:Linkset ;
+  a void:Linkset ;
 .
 
 m1: 

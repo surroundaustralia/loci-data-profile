@@ -57,7 +57,7 @@
         prof:hasRole role:validation
     ] ,
     [
-        skos:prefLabel "Validator for Linking Statement"@en ;
+        skos:prefLabel "Validator for Statement"@en ;
         dcterms:description "A SHACL validator Shape file implementing the specification's data requirements for the `loci:statement` class"@en ;
         dcterms:conformsTo <https://www.w3.org/TR/shacl/> ;
         dcterms:format "text/turtle" ;
@@ -132,14 +132,14 @@
         prof:hasRole role:example
     ] ,
     [
-        skos:prefLabel "Example of a valid Linking Statement"@en ;
+        skos:prefLabel "Example of a valid Statement"@en ;
         dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/statement-valid> ;
         prof:hasRole role:example
     ] ,
     [
-        skos:prefLabel "Example of an invalid Linking Statement"@en ;
-        skos:definition "This example is invalid because the Linking Statement indicated a generation method that doesn't state it is of type `prov:Plan`"@en ;
+        skos:prefLabel "Example of an invalid Statement"@en ;
+        skos:definition "This example is invalid because the Statement indicated a generation method that doesn't state it is of type `prov:Plan`"@en ;
         dcterms:format "text/turtle" ;
         prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/example/statement-invalid> ;
         prof:hasRole role:example
