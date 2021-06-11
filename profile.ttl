@@ -160,7 +160,7 @@
     [
         skos:prefLabel "Profile Code Repository"@en ;
         skos:definition "An online version control repository storing all the content of this profile"@en ;
-        prof:hasArtifact <https://linked.data.gov.au/def/loci-dp/repo> ;
+        prof:hasArtifact "https://linked.data.gov.au/def/loci-dp/repo"^^xsd:anyURI ;
         prof:hasRole role:repository
     ] ,
     [
