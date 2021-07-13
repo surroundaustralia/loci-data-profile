@@ -7,7 +7,6 @@
 @prefix reg: <http://purl.org/linked-data/registry#> .
 @prefix sdo: <https://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
@@ -17,9 +16,9 @@
 :Requirement-D-title
 	a sh:NodeShape ;
 	sh:targetClass dcat:Dataset ;
-    sh:message "Requirement D-title: Each Dataset _MUST_ have one and only one English title which is an English text literal, indicated using the `skos:prefLabel` property"@en ;
+    sh:message "Requirement D-title: Each Dataset _MUST_ have one and only one English title which is an English text literal, indicated using the `dcterms:title` property"@en ;
     sh:property [
-        sh:path skos:prefLabel ;
+        sh:path dcterms:title ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:datatype rdf:langString ;
@@ -30,9 +29,9 @@
 :Requirement-D-defn
 	a sh:NodeShape ;
 	sh:targetClass dcat:Dataset ;
-    sh:message "Requirement D-defn: Each Dataset _MUST_ have one and only one English definition which is an English text literal, indicated using the `skos:definition` property"@en ;
+    sh:message "Requirement D-defn: Each Dataset _MUST_ have one and only one English definition which is an English text literal, indicated using the `dcterms:description` property"@en ;
     sh:property [
-        sh:path skos:definition ;
+        sh:path dcterms:description ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:datatype rdf:langString ;

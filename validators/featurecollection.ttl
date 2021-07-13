@@ -5,7 +5,6 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 
@@ -15,9 +14,9 @@
 :Requirement-FC-title
 	a sh:NodeShape ;
 	sh:targetClass geo:FeatureCollection ;
-    sh:message "Requirement FC-title: Each Feature Collection _MUST_ have one and only one English title which is an English text literal, indicated using the `skos:prefLabel` property"@en ;
+    sh:message "Requirement FC-title: Each Feature Collection _MUST_ have one and only one English title which is an English text literal, indicated using the `dcterms:title` property"@en ;
     sh:property [
-        sh:path skos:prefLabel ;
+        sh:path dcterms:title ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:datatype rdf:langString ;
@@ -28,9 +27,9 @@
 :Requirement-FC-defn
 	a sh:NodeShape ;
 	sh:targetClass geo:FeatureCollection ;
-    sh:message "Requirement FC-defn: Each Feature Collection _MUST_ have one and only one English definition which is an English text literal, indicated using the `skos:definition` property"@en ;
+    sh:message "Requirement FC-defn: Each Feature Collection _MUST_ have one and only one English definition which is an English text literal, indicated using the `dcterms:description` property"@en ;
     sh:property [
-        sh:path skos:definition ;
+        sh:path dcterms:description ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
         sh:datatype rdf:langString ;
